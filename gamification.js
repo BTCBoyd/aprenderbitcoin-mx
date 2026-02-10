@@ -346,6 +346,12 @@ function checkRanking() {
   let correct = 0;
   let total = items.length;
   
+  // Mark exercise complete
+  const currentChapter = document.body.dataset.chapter;
+  if (currentChapter) {
+    markComplete(currentChapter, 'stocktoflow-ranking');
+  }
+  
   items.forEach((item, index) => {
     const currentPosition = index + 1;
     const correctPosition = parseInt(item.dataset.correctPosition);
@@ -407,6 +413,102 @@ function checkRanking() {
   
   feedbackDiv.innerHTML = feedback;
   feedbackDiv.classList.remove('hidden');
+}
+
+// Custom reflection handler for cacao (Cap 2)
+function submitReflectionCacao() {
+  const textarea = document.getElementById('reflection-cacao');
+  const text = textarea.value.trim();
+  const feedbackDiv = document.getElementById('reflection-cacao-feedback');
+  
+  if (text.length < 50) {
+    alert('Por favor escribe al menos 50 caracteres para reflexionar bien sobre el tema.');
+    return;
+  }
+  
+  // Mark exercise complete
+  const currentChapter = document.body.dataset.chapter;
+  if (currentChapter) {
+    markComplete(currentChapter, 'cacao-reflection');
+  }
+  
+  // Analyze response for keywords
+  const keywords = {
+    consumption: ['comer', 'comida', 'consumir', 'hambre', 'tentación'],
+    durability: ['pudre', 'pierde', 'deteriora', 'perecedero', 'dura'],
+    tradeoff: ['difícil', 'dilema', 'problema', 'conflicto']
+  };
+  
+  const lowerText = text.toLowerCase();
+  const hasConsumption = keywords.consumption.some(word => lowerText.includes(word));
+  const hasDurability = keywords.durability.some(word => lowerText.includes(word));
+  const hasTradeoff = keywords.tradeoff.some(word => lowerText.includes(word));
+  
+  let feedback = `
+    <div class="guided-feedback">
+      <h5>💭 Tu reflexión:</h5>
+      <div class="user-reflection">${text}</div>
+      <h5>🎓 Análisis guiado:</h5>
+  `;
+  
+  if (hasConsumption && hasDurability) {
+    feedback += `
+      <p>¡Excelente análisis! Captaste los dos problemas críticos del cacao como dinero.</p>
+      <div class="affirmation">
+        <strong>✅ Puntos clave que identificaste:</strong>
+        <ul>
+          <li><strong>Doble uso:</strong> El cacao era comida Y dinero - conflicto inevitable</li>
+          <li><strong>Baja durabilidad:</strong> Se pudre, germina, infesta - pierde valor automáticamente</li>
+          <li><strong>Presión de consumo:</strong> Hambre vs. ahorro - una batalla psicológica constante</li>
+        </ul>
+      </div>
+    `;
+  } else if (hasConsumption) {
+    feedback += `
+      <p>Bien! Identificaste el problema del doble uso (comida vs. dinero).</p>
+      <div class="exploration">
+        <strong>También considera:</strong>
+        <ul>
+          <li>Después de 1 año: 20-30% perdidas por infestación/humedad</li>
+          <li>Llueve 3 días: 50-70% se pudren o germinan</li>
+          <li>Incluso SIN comerlas, pierdes valor constantemente</li>
+        </ul>
+      </div>
+    `;
+  } else if (hasDurability) {
+    feedback += `
+      <p>Bien! Identificaste el problema de durabilidad.</p>
+      <div class="exploration">
+        <strong>También considera:</strong>
+        <p>Incluso si decides NO comerlas, tu familia tiene hambre frente a ti. La <strong>tentación psicológica</strong> de consumir tus ahorros es enorme. El dinero debe ser inútil para otros propósitos.</p>
+      </div>
+    `;
+  } else {
+    feedback += `
+      <p>Interesante perspectiva. Profundicemos:</p>
+      <div class="counterpoint">
+        <strong>📉 Los problemas del cacao:</strong>
+        <ul>
+          <li><strong>Físico:</strong> 20-30% anual perdido por infestación, 50-70% con lluvia</li>
+          <li><strong>Psicológico:</strong> Tu familia tiene hambre. ¿Conservas "dinero" o das de comer?</li>
+          <li><strong>Resultado:</strong> Imposible mantener ahorros a largo plazo</li>
+        </ul>
+      </div>
+    `;
+  }
+  
+  feedback += `
+    <div class="key-insight">
+      <strong>💡 Lección clave:</strong>
+      <p>El dinero debe ser <strong>inútil para otros propósitos</strong>, o la tentación de consumirlo destruye su función de reserva de valor. El oro es perfecto: no se come, no se pudre, no tiene otro uso práctico superior a ser dinero.</p>
+      <p><strong>Bitcoin:</strong> Literalmente imposible de consumir - solo sirve como dinero digital. Perfecta separación.</p>
+    </div>
+    </div>
+  `;
+  
+  feedbackDiv.innerHTML = feedback;
+  feedbackDiv.classList.remove('hidden');
+  textarea.disabled = true;
 }
 
 // ==========================================

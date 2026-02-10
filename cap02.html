@@ -7,7 +7,7 @@
     <title>Cap 2: Historia - Aprender Bitcoin</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-chapter="cap2">
     <nav class="navbar">
         <div class="container">
             <div class="logo">
@@ -149,30 +149,51 @@
                 <p class="section-intro">Reflexiona sobre estas preguntas después de ver el video.</p>
                 
                 <div class="questions">
-                    <div class="question-box">
+                    <div class="quiz-question" data-exercise-id="conchas-quiz">
                         <h4>1. El experimento de las conchas marinas</h4>
-                        <details>
-                            <summary>Ver análisis</summary>
-                            <p><strong>¿Qué característica falló primero?</strong> La escasez.</p>
-                            <p>Para una comunidad aislada sin acceso al mar, las conchas eran genuinamente escasas. Pero la escasez era <strong>circunstancial</strong>, no <strong>absoluta</strong>.</p>
-                            <p>Cuando apareció tecnología superior (barcos oceánicos), la escasez colapsó. Los comerciantes europeos trajeron barcos llenos desde Maldivas y Zanzíbar, destruyendo el valor monetario de las conchas.</p>
-                            <p><strong>Lección:</strong> La escasez debe ser absoluta, no circunstancial. Si depende de limitaciones tecnológicas o geográficas temporales, eventualmente fracasará.</p>
-                        </details>
+                        <p><strong>¿Qué característica del buen dinero falló primero en las conchas marinas?</strong></p>
+                        
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="false"
+                                    data-explanation="Las conchas sí eran durables físicamente - podían durar décadas sin dañarse. El problema no fue la durabilidad física.">
+                                Durabilidad
+                            </button>
+                            <button class="quiz-option" data-correct="true"
+                                    data-explanation="¡Correcto! Para una comunidad aislada sin acceso al mar, las conchas eran genuinamente escasas. Pero la escasez era CIRCUNSTANCIAL, no ABSOLUTA. Cuando apareció tecnología superior (barcos oceánicos), la escasez colapsó. Los comerciantes europeos trajeron barcos llenos desde Maldivas y Zanzíbar, destruyendo el valor monetario. LECCIÓN: La escasez debe ser absoluta, no circunstancial. Si depende de limitaciones tecnológicas o geográficas temporales, eventualmente fracasará.">
+                                Escasez
+                            </button>
+                            <button class="quiz-option" data-correct="false"
+                                    data-explanation="Las conchas eran bastante portables - livianas y fáciles de llevar en bolsas. Este no fue el problema principal.">
+                                Portabilidad
+                            </button>
+                            <button class="quiz-option" data-correct="false"
+                                    data-explanation="La fungibilidad sí era un problema (conchas grandes vs pequeñas), pero no fue lo que hizo colapsar su uso como dinero.">
+                                Fungibilidad
+                            </button>
+                        </div>
+                        
+                        <div class="quiz-feedback hidden"></div>
                     </div>
 
-                    <div class="question-box">
+                    <div class="reflection-exercise" data-exercise-id="cacao-reflection">
                         <h4>2. El cacao azteca: cuando tu dinero es comida</h4>
-                        <details>
-                            <summary>Ver análisis</summary>
-                            <p><strong>El problema:</strong> Las semillas de cacao eran comestibles y perecederas.</p>
-                            <p><strong>Ejercicio:</strong> Eres comerciante azteca con 1,000 semillas ahorradas:</p>
-                            <ul>
-                                <li>Después de 1 año: 20-30% perdidas por infestación/humedad</li>
-                                <li>Llueve 3 días: 50-70% se pudren o germinan</li>
-                                <li>Tu familia tiene hambre: ¿Las comes o las conservas como dinero?</li>
-                            </ul>
-                            <p><strong>Lección:</strong> El dinero debe ser inútil para otros propósitos, o la tentación de consumirlo destruye su función de reserva de valor.</p>
-                        </details>
+                        
+                        <p><strong>Escenario:</strong> Eres comerciante azteca con 1,000 semillas de cacao ahorradas. Después de 1 año, 20-30% se pierden por infestación. Llueve 3 días y otro 50% se pudren. Tu familia tiene hambre.</p>
+                        
+                        <div class="reflection-input">
+                            <textarea 
+                                placeholder="Escribe tu reflexión (mínimo 50 caracteres): ¿Qué problema tiene usar comida como dinero? ¿Las comerías o las conservarías? ¿Por qué?"
+                                rows="5"
+                                id="reflection-cacao"
+                            ></textarea>
+                            <button class="button primary" onclick="submitReflectionCacao()">
+                                Enviar Reflexión
+                            </button>
+                        </div>
+                        
+                        <div id="reflection-cacao-feedback" class="hidden">
+                            <!-- Feedback appears here -->
+                        </div>
                     </div>
 
                     <div class="question-box">
@@ -202,6 +223,49 @@
                             <p><strong>Comparación:</strong> 10 onzas de oro guardadas 20 años = 10 onzas. 10 vacas durante 20 años = trabajo constante + muertes + crías = sistema complejo.</p>
                             <p><strong>Lección:</strong> El buen dinero debe conservar valor sin requerir trabajo continuo.</p>
                         </details>
+                    </div>
+
+                    <div class="ranking-exercise" data-exercise-id="stocktoflow-ranking">
+                        <h4>5. Ejercicio Interactivo: Ordena el dinero por dureza (Stock-to-Flow)</h4>
+                        
+                        <p><strong>Instrucciones:</strong> Arrastra las formas de dinero para ordenarlas de MÁS DURO (arriba) a MENOS DURO (abajo). Stock-to-Flow = años para duplicar la oferta. Mayor SF = más duro = mejor dinero.</p>
+                        
+                        <div class="ranking-items" id="money-ranking">
+                            <div class="ranking-item" draggable="true" data-correct-position="1">
+                                <span class="drag-handle">⋮⋮</span>
+                                <strong>Bitcoin</strong> <span style="color: #666;">(SF → ∞ en 2140)</span>
+                            </div>
+                            <div class="ranking-item" draggable="true" data-correct-position="2">
+                                <span class="drag-handle">⋮⋮</span>
+                                <strong>Oro</strong> <span style="color: #666;">(SF ~66 años)</span>
+                            </div>
+                            <div class="ranking-item" draggable="true" data-correct-position="3">
+                                <span class="drag-handle">⋮⋮</span>
+                                <strong>Plata</strong> <span style="color: #666;">(SF ~22 años)</span>
+                            </div>
+                            <div class="ranking-item" draggable="true" data-correct-position="4">
+                                <span class="drag-handle">⋮⋮</span>
+                                <strong>Ganado</strong> <span style="color: #666;">(SF ~3-5 años)</span>
+                            </div>
+                            <div class="ranking-item" draggable="true" data-correct-position="5">
+                                <span class="drag-handle">⋮⋮</span>
+                                <strong>Conchas</strong> <span style="color: #666;">(SF variable)</span>
+                            </div>
+                            <div class="ranking-item" draggable="true" data-correct-position="6">
+                                <span class="drag-handle">⋮⋮</span>
+                                <strong>Cacao</strong> <span style="color: #666;">(SF ~1 año)</span>
+                            </div>
+                            <div class="ranking-item" draggable="true" data-correct-position="7">
+                                <span class="drag-handle">⋮⋮</span>
+                                <strong>Frutas</strong> <span style="color: #666;">(SF ~0.1 año)</span>
+                            </div>
+                        </div>
+                        
+                        <button onclick="checkRanking()" class="button primary">
+                            Verificar Orden
+                        </button>
+                        
+                        <div id="ranking-feedback" class="hidden"></div>
                     </div>
                 </div>
             </section>
@@ -562,5 +626,6 @@
 
     <!-- Chapter Interactive Features -->
     <script src="chapter.js"></script>
+    <script src="gamification.js"></script>
 </body>
 </html>
