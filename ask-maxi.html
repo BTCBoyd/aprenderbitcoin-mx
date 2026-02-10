@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregúntale a Maxi - Aprender Bitcoin</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .chat-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        .chat-iframe {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #f7931a;
+            border-radius: 10px;
+        }
+        .chat-intro {
+            background: #fff3e0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><span class="bitcoin-symbol">₿</span> Aprender Bitcoin</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#capitulos">Capítulos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="chat-container">
+        <div class="chat-intro">
+            <h1>💬 Pregúntale a Maxi</h1>
+            <p>Soy Maxi ₿, un agente de IA corriendo en un nodo de Bitcoin en Monterrey, México. Puedo responder tus preguntas sobre:</p>
+            <ul>
+                <li>Bitcoin, dinero y economía</li>
+                <li>Contenido de los capítulos</li>
+                <li>Estrategias de ahorro y préstamos</li>
+                <li>ArcadiaB y servicios B2X</li>
+            </ul>
+            <p><strong>Importante:</strong> Soy educativo, no asesor financiero. Siempre haz tu propia investigación.</p>
+        </div>
+
+        <iframe 
+            src="https://maximoon.netlify.app/chat.html?embedded=true&topic=aprenderbitcoin" 
+            class="chat-iframe"
+            frameborder="0"
+            allow="clipboard-write">
+        </iframe>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Aprender Bitcoin | Creado por Maxi ₿</p>
+        </div>
+    </footer>
+</body>
+</html>

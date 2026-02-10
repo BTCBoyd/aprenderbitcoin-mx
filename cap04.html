@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Capítulo 4: Dinero fiat - Aprender Bitcoin">
+    <title>Cap 4: Fiat - Aprender Bitcoin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><span class="bitcoin-symbol">₿</span> Aprender Bitcoin</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="cap03.html">← Cap 3</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html">Cap 5 →</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="chapter-page">
+        <div class="container">
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <span class="chapter-number">Capítulo 4</span>
+                <h1>Fiat: El Fin del Patrón Oro</h1>
+                <p class="chapter-intro">El 15 de agosto de 1971, Nixon suspendió la convertibilidad del dólar en oro. No fue un accidente. Fue una decisión política que cambió el sistema monetario mundial. Descubre cómo pasamos de oro a papel sin respaldo.</p>
+            </div>
+
+            <!-- Pre-lectura -->
+            <section class="content-section prelectura">
+                <h2>📖 Pre-lectura (5 minutos)</h2>
+                <p class="section-intro">Lee esto ANTES de ver el video para aprovechar mejor el contenido.</p>
+                
+                <div class="content-box">
+                    <h3>La gran pregunta</h3>
+                    <blockquote>
+                        "Si el oro era tan buen dinero, ¿cómo terminamos usando papel sin respaldo?"
+                    </blockquote>
+                    <p><strong>Respuesta corta:</strong> No fue un accidente. Fue una decisión política deliberada.</p>
+                    
+                    <h3>Timeline crítico</h3>
+                    
+                    <h4>1944: Bretton Woods - El dólar respaldado por oro</h4>
+                    <p><strong>Contexto:</strong> Segunda Guerra Mundial acababa de terminar. Europa en ruinas, pero EE.UU. intacto con 2/3 del oro mundial.</p>
+                    
+                    <div class="example-box">
+                        <p><strong>Acuerdo de Bretton Woods:</strong></p>
+                        <ul>
+                            <li>El dólar estaría respaldado por oro: <strong>$35 USD = 1 onza de oro</strong></li>
+                            <li>Otras monedas se vincularían al dólar</li>
+                            <li>Resultado: Dólar = nueva moneda de reserva mundial</li>
+                        </ul>
+                        <p><strong>En la práctica:</strong> El mundo confió su oro a Estados Unidos.</p>
+                    </div>
+                    
+                    <h4>1960s: La trampa se cierra</h4>
+                    <div class="bad-option">
+                        <p><strong>El problema:</strong></p>
+                        <ul>
+                            <li>EE.UU. gastó MÁS de lo que tenía en oro</li>
+                            <li>Guerra de Vietnam: billones de dólares</li>
+                            <li>Programas sociales (Great Society): más billones</li>
+                            <li><strong>Resultado:</strong> Imprimieron dólares SIN respaldo de oro</li>
+                        </ul>
+                        
+                        <p><strong>Otros países lo notaron:</strong></p>
+                        <ul>
+                            <li>Francia (Charles de Gaulle): "Queremos nuestro oro de vuelta"</li>
+                            <li>Empezaron a canjear dólares por oro</li>
+                            <li>Las reservas de EE.UU. caían rápidamente</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>1971: Nixon Shock - El fin del patrón oro</h4>
+                    <div class="example-box">
+                        <p><strong>15 de agosto, 1971:</strong></p>
+                        <p>Presidente Richard Nixon anuncia en TV:</p>
+                        <blockquote>"Suspendo temporalmente la convertibilidad del dólar en oro."</blockquote>
+                        
+                        <p><strong>Traducción:</strong> Ya no pueden canjear dólares por oro. Confíen en nosotros.</p>
+                        <p><strong>"Temporalmente"</strong> = 54+ años y contando.</p>
+                        
+                        <p><strong>Resultado:</strong></p>
+                        <ul>
+                            <li>El dólar dejó de ser un recibo canjeable</li>
+                            <li>Se convirtió en papel respaldado solo por confianza</li>
+                            <li><strong>Nació el dinero fiat:</strong> "dinero por decreto"</li>
+                        </ul>
+                        <p><em>Fiat (latín) = "Que así sea" / "Hágase"</em></p>
+                    </div>
+                    
+                    <h3>¿Qué es el dinero fiat?</h3>
+                    <p><strong>Definición:</strong> Dinero que vale porque el gobierno lo declara, no porque esté respaldado por algo escaso.</p>
+                    
+                    <div class="comparison-box">
+                        <h4>Características del dinero fiat:</h4>
+                        <ul>
+                            <li>✅ Portable (muy ligero)</li>
+                            <li>✅ Divisible (centavos, diferentes denominaciones)</li>
+                            <li>✅ Fungible (un peso = otro peso)</li>
+                            <li>✅ Verificable (marcas de agua, hologramas)</li>
+                            <li>❌ <strong>Escaso:</strong> Se puede imprimir infinitamente</li>
+                            <li>⚠️ <strong>Duradero:</strong> El papel dura, pero el VALOR se degrada (inflación)</li>
+                        </ul>
+                    </div>
+                    
+                    <p><strong>La diferencia crítica con el oro:</strong></p>
+                    <ul>
+                        <li>Oro: Escasez natural (SF = 66)</li>
+                        <li>Fiat: Escasez artificial (depende de "disciplina" del gobierno)</li>
+                    </ul>
+                    
+                    <h3>El sistema del petrodólar (1974)</h3>
+                    <p><strong>Problema post-1971:</strong> Si el dólar ya no está respaldado por oro, ¿por qué seguir usándolo?</p>
+                    
+                    <div class="good-option">
+                        <p><strong>Solución de Henry Kissinger - Acuerdo con Arabia Saudita (1974):</strong></p>
+                        <ol>
+                            <li>Arabia vende petróleo SOLO en dólares</li>
+                            <li>EE.UU. protege militarmente a Arabia Saudita</li>
+                            <li>Arabia compra bonos del tesoro con esos dólares</li>
+                        </ol>
+                        
+                        <p><strong>Resultado:</strong> Cualquier país que quiera petróleo → necesita dólares → demanda global garantizada</p>
+                        <p><strong>Nueva base del dólar:</strong> No oro, sino <strong>petróleo + poder militar</strong></p>
+                    </div>
+                    
+                    <h3>La diferencia entre patrón oro y fiat</h3>
+                    <div class="evaluation-table">
+                        <table>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>Patrón oro (pre-1971)</th>
+                                <th>Dinero fiat (post-1971)</th>
+                            </tr>
+                            <tr>
+                                <td>Respaldo</td>
+                                <td>Oro físico en bóvedas</td>
+                                <td>Confianza en el gobierno</td>
+                            </tr>
+                            <tr>
+                                <td>Límite de emisión</td>
+                                <td>Cantidad de oro disponible</td>
+                                <td>Sin límite (político)</td>
+                            </tr>
+                            <tr>
+                                <td>Convertibilidad</td>
+                                <td>$35 = 1 oz oro</td>
+                                <td>No convertible</td>
+                            </tr>
+                            <tr>
+                                <td>Inflación</td>
+                                <td>Limitada por oro</td>
+                                <td>Potencialmente ilimitada</td>
+                            </tr>
+                            <tr>
+                                <td>Control</td>
+                                <td>Descentralizado (oro en múltiples países)</td>
+                                <td>Centralizado (gobierno)</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <h3>¿Por qué los gobiernos eligieron fiat?</h3>
+                    <div class="comparison-box">
+                        <p><strong>Ventaja para gobiernos:</strong></p>
+                        <ul>
+                            <li>Pueden imprimir dinero para pagar deudas</li>
+                            <li>Financian guerras sin aumentar impuestos</li>
+                            <li>Controlan la economía vía política monetaria</li>
+                        </ul>
+                        
+                        <p><strong>Desventaja para ciudadanos:</strong></p>
+                        <ul>
+                            <li>Tu dinero pierde valor constantemente (inflación)</li>
+                            <li>No puedes "escapar" (legal tender laws)</li>
+                            <li>Tu trabajo acumulado se evapora lentamente</li>
+                        </ul>
+                    </div>
+                    
+                    <blockquote>
+                        "El dinero pasó de ser un recurso limitado a una herramienta política."
+                    </blockquote>
+                </div>
+            </section>
+
+            <!-- Video -->
+            <section class="content-section video-section">
+                <h2>🎥 Video Principal (~11 minutos)</h2>
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <p>📹 Video de OyeBitcoin: "Cap 4 - Fiat"</p>
+                        <p class="small">El video será embebido aquí una vez que Jose Carlos Flores proporcione el enlace de YouTube.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Preguntas de Discusión -->
+            <section class="content-section discussion">
+                <h2>💬 Preguntas de Discusión</h2>
+                <p class="section-intro">Reflexiona sobre estas preguntas después de ver el video.</p>
+                
+                <div class="questions">
+                    <div class="question-box">
+                        <h4>1. Bretton Woods: ¿Decisión inteligente o inevitable?</h4>
+                        <details>
+                            <summary>Ver análisis</summary>
+                            <p><strong>Contexto de 1944:</strong></p>
+                            <ul>
+                                <li>Europa destruida por la guerra</li>
+                                <li>EE.UU. tenía ~2/3 del oro mundial</li>
+                                <li>EE.UU. tenía poder militar intacto</li>
+                                <li>Necesidad de estabilidad económica</li>
+                            </ul>
+                            <p><strong>Pregunta:</strong> ¿Por qué el mundo confió su oro a Estados Unidos?</p>
+                            <p><strong>Respuesta:</strong> No tenían alternativa. EE.UU. era la única potencia económica funcional.</p>
+                            <p><strong>¿Fue inteligente?</strong> A corto plazo sí (estabilidad). A largo plazo no (centralización del poder).</p>
+                        </details>
+                    </div>
+
+                    <div class="question-box">
+                        <h4>2. Nixon Shock 1971: ¿Default de deuda?</h4>
+                        <details>
+                            <summary>Ver análisis</summary>
+                            <p><strong>El anuncio:</strong> Nixon suspendió "temporalmente" la convertibilidad del dólar en oro el 15 de agosto de 1971.</p>
+                            <p><strong>Han pasado 54+ años.</strong> El "temporal" nunca terminó. Nadie votó por esto. Cambió el sistema monetario mundial de un día para otro.</p>
+                            <p><strong>¿Fue esto un default?</strong> Sí. EE.UU. prometió $35 = 1 oz oro. Rompió esa promesa.</p>
+                            <p><strong>¿Por qué no hay consecuencias?</strong></p>
+                            <ul>
+                                <li>Poder militar (nadie puede forzar a EE.UU.)</li>
+                                <li>Petrodólar (creado en 1974)</li>
+                                <li>Red de alianzas globales</li>
+                                <li>Alternativas limitadas (hasta Bitcoin)</li>
+                            </ul>
+                        </details>
+                    </div>
+
+                    <div class="question-box">
+                        <h4>3. Petrodólar: ¿Mejor o peor que el patrón oro?</h4>
+                        <details>
+                            <summary>Ver análisis</summary>
+                            <p><strong>Comparación:</strong></p>
+                            <div class="comparison-box">
+                                <table>
+                                    <tr>
+                                        <th>Aspecto</th>
+                                        <th>Patrón oro</th>
+                                        <th>Petrodólar</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Respaldo</td>
+                                        <td>Oro (escaso por naturaleza)</td>
+                                        <td>Petróleo (escaso pero agotable)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Verificable</td>
+                                        <td>Sí (pesas el oro)</td>
+                                        <td>No (promesa de flujo continuo)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Conflictos</td>
+                                        <td>Pocos</td>
+                                        <td>Muchos (Medio Oriente)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Control</td>
+                                        <td>Descentralizado</td>
+                                        <td>Centralizado (EE.UU. + OPEP)</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <p><strong>Reflexión:</strong> El petrodólar requiere poder militar para mantenerse. ¿Es sostenible a largo plazo?</p>
+                        </details>
+                    </div>
+
+                    <div class="question-box">
+                        <h4>4. México y las devaluaciones</h4>
+                        <details>
+                            <summary>Ver análisis</summary>
+                            <p><strong>Historia de devaluaciones del peso:</strong></p>
+                            <div class="evaluation-table">
+                                <table>
+                                    <tr>
+                                        <th>Año</th>
+                                        <th>Evento</th>
+                                        <th>Antes</th>
+                                        <th>Después</th>
+                                        <th>Pérdida</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1976</td>
+                                        <td>Primera devaluación</td>
+                                        <td>$12.50/USD</td>
+                                        <td>$22.50/USD</td>
+                                        <td>-44%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1982</td>
+                                        <td>Crisis de deuda</td>
+                                        <td>$22/USD</td>
+                                        <td>$150/USD</td>
+                                        <td>-85%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1994</td>
+                                        <td>Crisis Tequila</td>
+                                        <td>$3.40/USD</td>
+                                        <td>$7.50/USD</td>
+                                        <td>-55%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2008</td>
+                                        <td>Crisis financiera</td>
+                                        <td>$10/USD</td>
+                                        <td>$15/USD</td>
+                                        <td>-33%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2020</td>
+                                        <td>Pandemia</td>
+                                        <td>$18/USD</td>
+                                        <td>$25/USD</td>
+                                        <td>-28%</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <p><strong>Patrón claro:</strong> Cada 10-15 años → crisis → devaluación → pérdida de ahorros</p>
+                            <p><strong>¿Por qué sucede?</strong> Gobierno gasta más de lo que recauda → imprime pesos → más pesos = menos valor</p>
+                        </details>
+                    </div>
+
+                    <div class="question-box">
+                        <h4>5. ¿Quién se beneficia del dinero fiat?</h4>
+                        <details>
+                            <summary>Ver análisis</summary>
+                            <p><strong>Los que reciben dinero nuevo PRIMERO:</strong></p>
+                            
+                            <div class="good-option">
+                                <p><strong>Beneficiados:</strong></p>
+                                <ul>
+                                    <li>Gobierno (imprime para pagar deudas)</li>
+                                    <li>Bancos (reciben dinero nuevo a tasa preferencial)</li>
+                                    <li>Grandes empresas (acceso a crédito barato)</li>
+                                    <li>Dueños de activos (inmuebles, acciones suben con inflación)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bad-option">
+                                <p><strong>Perjudicados:</strong></p>
+                                <ul>
+                                    <li>Ahorradores (dinero en banco pierde valor)</li>
+                                    <li>Trabajadores (salarios suben más lento que precios)</li>
+                                    <li>Jubilados (pensión fija se devalúa)</li>
+                                    <li>Clase media (atrapada entre inflación y salarios estancados)</li>
+                                </ul>
+                            </div>
+                            
+                            <p><strong>Pregunta:</strong> ¿Es coincidencia que la desigualdad haya explotado desde 1971?</p>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profundización -->
+            <section class="content-section deepdive">
+                <h2>🔬 Profundización: El Fin del Patrón Oro</h2>
+                <p class="section-intro">Qué cambió realmente en 1971.</p>
+                
+                <div class="content-box">
+                    <h3>Antes y después de 1971</h3>
+                    
+                    <h4>El mundo antes de 1971</h4>
+                    <div class="comparison-box">
+                        <p><strong>Bajo patrón oro:</strong></p>
+                        <ul>
+                            <li>Gobierno quiere gastar $1,000 millones</li>
+                            <li>Necesita tener oro equivalente en reservas</li>
+                            <li>Si no tiene oro, NO puede gastar</li>
+                            <li><strong>Resultado:</strong> Límite natural al gasto</li>
+                        </ul>
+                        <p><strong>Analogía:</strong> Es como tener tarjeta de débito. Solo gastas lo que tienes.</p>
+                        
+                        <p><strong>Inflación limitada:</strong></p>
+                        <ul>
+                            <li>Oro se extrae lentamente (SF = 66)</li>
+                            <li>Oferta monetaria crece ~2-3% anual</li>
+                            <li>Precios estables a largo plazo</li>
+                        </ul>
+                        <p><strong>Dato:</strong> Entre 1880-1914, inflación promedio en EE.UU.: ~0.1% anual</p>
+                    </div>
+                    
+                    <h4>El mundo después de 1971</h4>
+                    <div class="bad-option">
+                        <p><strong>Bajo dinero fiat:</strong></p>
+                        <ul>
+                            <li>Gobierno quiere gastar $1,000 millones</li>
+                            <li>No necesita oro</li>
+                            <li>Simplemente imprime o pide prestado</li>
+                            <li><strong>Resultado:</strong> Sin límite natural (solo político)</li>
+                        </ul>
+                        <p><strong>Analogía:</strong> Tarjeta de crédito sin límite. Puedes gastar infinito... hasta que colapses.</p>
+                        
+                        <p><strong>Inflación desatada:</strong></p>
+                        <ul>
+                            <li>Oferta monetaria crece 7-15% anual</li>
+                            <li>Precios suben correspondientemente</li>
+                            <li>Poder adquisitivo cae constantemente</li>
+                        </ul>
+                        <p><strong>Dato:</strong> Desde 1971, el dólar ha perdido ~98% de su poder adquisitivo vs oro</p>
+                    </div>
+                    
+                    <h3>Los ganadores y perdedores</h3>
+                    
+                    <div class="example-box">
+                        <h4>Ganadores del sistema fiat:</h4>
+                        <ul>
+                            <li><strong>Gobiernos:</strong> Pueden gastar sin límite, pagan deudas con dinero devaluado</li>
+                            <li><strong>Bancos:</strong> Crean dinero vía reserva fraccionaria, ganan con inflación de activos</li>
+                            <li><strong>Dueños de activos (ricos):</strong> Acciones/inmuebles/commodities suben con inflación</li>
+                        </ul>
+                        
+                        <h4>Perdedores del sistema fiat:</h4>
+                        <ul>
+                            <li><strong>Ahorradores:</strong> Dinero en banco pierde 5-8%/año</li>
+                            <li><strong>Asalariados:</strong> Salarios suben más lento que precios</li>
+                            <li><strong>Jubilados:</strong> Pensión fija se devalúa</li>
+                            <li><strong>Clase media:</strong> Atrapada entre inflación y salarios</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>¿Por qué no volvemos al patrón oro?</h3>
+                    
+                    <p><strong>Razón 1: Pérdida de soberanía monetaria</strong></p>
+                    <p>Bajo oro, países con déficit pierden oro y deben hacer austeridad. Gobiernos no quieren renunciar al poder de imprimir.</p>
+                    
+                    <p><strong>Razón 2: Deuda existente es impagable</strong></p>
+                    <p>EE.UU. debe $37 billones. Para respaldar con oro a $35/oz necesitarían ~32,000 toneladas. Solo tienen ~8,130 toneladas.</p>
+                    
+                    <p><strong>Razón 3: Infraestructura desmantelada</strong></p>
+                    <p>Todo el sistema logístico del oro (bóvedas, transporte, verificación) fue desmantelado post-1971.</p>
+                    
+                    <blockquote>
+                        "1971 no fue un 'ajuste técnico.' Fue el momento en que la humanidad abandonó 2,500 años de dinero duro y apostó todo a dinero blando."
+                    </blockquote>
+                </div>
+            </section>
+
+            <!-- Caso México -->
+            <section class="content-section case-study">
+                <h2>🇲🇽 Caso de Estudio: Las Devaluaciones del Peso (1976-2025)</h2>
+                
+                <div class="content-box">
+                    <h3>50 años de dinero fiat en México</h3>
+                    <p><strong>Tesis:</strong> México es el caso de estudio perfecto de por qué el dinero fiat no funciona como reserva de valor.</p>
+                    <p><strong>Resultado en una frase:</strong> El peso ha perdido ~99.9% de su valor vs el dólar (y >99.9% vs oro/Bitcoin).</p>
+                    
+                    <h3>Calculando la pérdida real (1971-2025)</h3>
+                    
+                    <h4>Método 1: Vs el dólar</h4>
+                    <ul>
+                        <li>1971: $12.50 pesos/USD</li>
+                        <li>2025: ~$20 pesos/USD</li>
+                        <li>Pérdida aparente: 60%</li>
+                    </ul>
+                    <p><strong>PERO</strong> esto ignora que el DÓLAR también perdió valor vs el oro.</p>
+                    
+                    <h4>Método 2: Vs el oro (la verdad)</h4>
+                    <div class="comparison-box">
+                        <p><strong>1971:</strong></p>
+                        <ul>
+                            <li>Oro: $35 USD/oz</li>
+                            <li>Peso: $12.50/USD</li>
+                            <li>1 oz oro = $437.50 pesos</li>
+                        </ul>
+                        
+                        <p><strong>2025:</strong></p>
+                        <ul>
+                            <li>Oro: $2,700 USD/oz</li>
+                            <li>Peso: $20/USD</li>
+                            <li>1 oz oro = $54,000 pesos</li>
+                        </ul>
+                        
+                        <p><strong>Aumento nominal:</strong> 123x</p>
+                        <p><strong>Pero esto significa:</strong> El peso cayó 99.2% vs el oro</p>
+                    </div>
+                    
+                    <h4>Método 3: Poder adquisitivo real (tortillas)</h4>
+                    <div class="example-box">
+                        <p><strong>1971:</strong></p>
+                        <ul>
+                            <li>Salario mínimo: $25 pesos/día</li>
+                            <li>Tortillas: $0.80 pesos/kg</li>
+                            <li>Poder: 31 kg tortillas/día</li>
+                        </ul>
+                        
+                        <p><strong>2025:</strong></p>
+                        <ul>
+                            <li>Salario mínimo: $248 pesos/día</li>
+                            <li>Tortillas: $22 pesos/kg</li>
+                            <li>Poder: 11 kg tortillas/día</li>
+                        </ul>
+                        
+                        <p><strong>Pérdida de poder adquisitivo: 65%</strong></p>
+                    </div>
+                    
+                    <h3>¿Qué hubiera pasado con estrategias alternativas?</h3>
+                    
+                    <p><strong>Escenario:</strong> Guardaste $100,000 pesos en 1982.</p>
+                    
+                    <div class="evaluation-table">
+                        <table>
+                            <tr>
+                                <th>Estrategia</th>
+                                <th>Valor 2025</th>
+                                <th>Resultado</th>
+                            </tr>
+                            <tr>
+                                <td>Pesos en banco</td>
+                                <td>~$500 pesos reales</td>
+                                <td>-99.5% pérdida</td>
+                            </tr>
+                            <tr>
+                                <td>Dólares en efectivo</td>
+                                <td>~$13,320 pesos</td>
+                                <td>-90% pérdida real</td>
+                            </tr>
+                            <tr>
+                                <td>Oro físico</td>
+                                <td>~$99,360 pesos</td>
+                                <td>Mantuviste ~60% valor</td>
+                            </tr>
+                            <tr>
+                                <td>Bitcoin (desde 2010)</td>
+                                <td>$15,400,000,000 pesos</td>
+                                <td>154,000x ganancia</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <h3>La familia Ramírez: Caso real</h3>
+                    <div class="example-box">
+                        <p><strong>Situación (2000):</strong></p>
+                        <p>Vendieron casa heredada: $800,000 pesos</p>
+                        <p><strong>Decisión:</strong> Dejaron en CETES (opción "segura")</p>
+                        
+                        <p><strong>Resultados (2025):</strong></p>
+                        <ul>
+                            <li>CETES: $3,664,000 pesos nominales</li>
+                            <li>Poder adquisitivo real: ~$1,308,000 pesos de 2000</li>
+                            <li><strong>Pérdida real: 64%</strong></li>
+                        </ul>
+                        
+                        <p><strong>Si hubieran diversificado con Bitcoin (2013):</strong></p>
+                        <ul>
+                            <li>$200,000 en BTC = 200 BTC</li>
+                            <li>Valor 2025: $560,000,000 pesos</li>
+                            <li><strong>Ganancia real: 70,000%</strong></li>
+                        </ul>
+                        
+                        <blockquote>
+                            "Confiamos en el sistema. Hicimos lo que nos dijeron que era 'seguro.' Perdimos casi todo el valor real de una casa entera."
+                        </blockquote>
+                    </div>
+                    
+                    <h3>Solución moderna: Estrategia híbrida con ArcadiaB</h3>
+                    
+                    <div class="cta-box">
+                        <p><strong>El problema:</strong></p>
+                        <ul>
+                            <li>Necesitas protegerte del peso (fiat débil)</li>
+                            <li>Pero también necesitas liquidez en pesos (gastos del día)</li>
+                        </ul>
+                        
+                        <p><strong>La solución:</strong></p>
+                        <ol>
+                            <li>Convierte ahorros a Bitcoin (protección)</li>
+                            <li>Usa préstamos ArcadiaB cuando necesites pesos (liquidez)</li>
+                            <li>Conserva exposición a Bitcoin (crecimiento)</li>
+                        </ol>
+                        
+                        <p><strong>Ejemplo: Carlos, contador en CDMX</strong></p>
+                        <p>Compró 1.5 BTC en 2022 a $330,000 MXN. En 2025 vale $4,200,000 (8.4x). Necesita $800,000 para remodelar oficina.</p>
+                        
+                        <p><strong>Con ArcadiaB B2X:</strong></p>
+                        <ul>
+                            <li>Colateral: 0.40 BTC (~50% LTV)</li>
+                            <li>Recibe: $800,000 pesos inmediatamente</li>
+                            <li>Conserva: 1.10 BTC libres + 0.40 en colateral</li>
+                            <li>No paga ISR (no es venta)</li>
+                            <li>Si BTC sube 30%, gana $1,260,000 adicionales</li>
+                        </ul>
+                        
+                        <a href="https://arcadiab.com" target="_blank" class="button primary">Conocer ArcadiaB B2X</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ejercicio Práctico -->
+            <section class="content-section exercise">
+                <h2>🎯 Ejercicio Práctico: Calculadora de Devaluación</h2>
+                <p class="section-intro">Calcula cuánto valor han perdido tus ahorros en pesos.</p>
+                
+                <div class="calculator">
+                    <h3>Tu línea de tiempo personal</h3>
+                    
+                    <div class="input-group">
+                        <label>¿En qué año empezaste a ahorrar?</label>
+                        <select id="startYear">
+                            <option value="2000">2000</option>
+                            <option value="2005">2005</option>
+                            <option value="2010">2010</option>
+                            <option value="2015" selected>2015</option>
+                            <option value="2020">2020</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>¿Cuánto tienes ahorrado ahora? (pesos)</label>
+                        <input type="number" id="currentSavings" placeholder="100000">
+                    </div>
+                    
+                    <button onclick="calculateDevaluation()" class="button">Calcular Pérdida</button>
+                    
+                    <div id="devalResults" class="results-box" style="display:none;">
+                        <h4>Resultados:</h4>
+                        <p><strong>Años ahorrando:</strong> <span id="yearsS saving"></span> años</p>
+                        <p><strong>Inflación acumulada (5%/año):</strong> <span id="inflationPct"></span>%</p>
+                        <p><strong>Poder adquisitivo restante:</strong> <span id="purchasingPower"></span>%</p>
+                        <p><strong>Valor real en pesos de inicio:</strong> $<span id="realValue"></span></p>
+                        <p><strong>Pérdida absoluta:</strong> $<span id="absoluteLoss"></span></p>
+                        
+                        <div class="insight-box">
+                            <h4>Comparación con Bitcoin:</h4>
+                            <p id="btcComparison"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <div class="chapter-nav">
+                <a href="cap03.html" class="button secondary">← Cap 3: Oro</a>
+                <a href="index.html" class="button primary">Inicio</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Aprender Bitcoin | Creado por Maxi ₿</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateDevaluation() {
+            const startYear = parseInt(document.getElementById('startYear').value);
+            const currentSavings = parseFloat(document.getElementById('currentSavings').value);
+            
+            if (!currentSavings) {
+                alert('Por favor ingresa tus ahorros actuales');
+                return;
+            }
+            
+            const currentYear = 2025;
+            const yearsSaving = currentYear - startYear;
+            const inflationRate = 0.05; // 5% anual promedio
+            
+            const inflationMultiplier = Math.pow(1 + inflationRate, yearsSaving);
+            const inflationPct = (inflationMultiplier - 1) * 100;
+            const purchasingPowerPct = (1 / inflationMultiplier) * 100;
+            const realValue = currentSavings / inflationMultiplier;
+            const absoluteLoss = currentSavings - realValue;
+            
+            document.getElementById('yearsSaving').textContent = yearsSaving;
+            document.getElementById('inflationPct').textContent = inflationPct.toFixed(1);
+            document.getElementById('purchasingPower').textContent = purchasingPowerPct.toFixed(1);
+            document.getElementById('realValue').textContent = realValue.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            document.getElementById('absoluteLoss').textContent = absoluteLoss.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // Bitcoin comparison (simplified)
+            const btcPrices = {2000: 0, 2005: 0, 2010: 0.3, 2015: 250, 2020: 200};
+            const btcPrice2025 = 2800000; // MXN
+            
+            let btcComparison = '';
+            if (btcPrices[startYear] && btcPrices[startYear] > 0) {
+                const btcAmount = currentSavings / btcPrices[startYear];
+                const btcValue2025 = btcAmount * btcPrice2025;
+                const btcGain = ((btcValue2025 / currentSavings) - 1) * 100;
+                btcComparison = `Si hubieras invertido en Bitcoin en ${startYear}: $${btcValue2025.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} pesos (${btcGain.toFixed(0)}% ganancia vs ${purchasingPowerPct.toFixed(0)}% poder adquisitivo en pesos)`;
+            } else {
+                btcComparison = `Bitcoin aún no existía o no tenía precio establecido en ${startYear}.`;
+            }
+            
+            document.getElementById('btcComparison').textContent = btcComparison;
+            document.getElementById('devalResults').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
