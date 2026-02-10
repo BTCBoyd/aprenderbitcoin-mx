@@ -66,6 +66,12 @@ function initializeStarRatings() {
 function showEvaluation() {
   const resultsDiv = document.getElementById('evaluation-results');
   if (!resultsDiv) return;
+  
+  // Mark exercise complete
+  const currentChapter = document.body.dataset.chapter;
+  if (currentChapter) {
+    markComplete(currentChapter, 'characteristics-rating');
+  }
 
   let html = '<h4>📊 Comparación: Tu Evaluación vs. Análisis Experto</h4>';
   html += '<div class="comparison-grid">';
@@ -151,9 +157,17 @@ function initializeQuizzes() {
   document.querySelectorAll('.quiz-option').forEach(option => {
     option.addEventListener('click', (e) => {
       const isCorrect = e.target.dataset.correct === 'true';
-      const feedbackDiv = e.target.closest('.quiz-question').querySelector('.quiz-feedback');
+      const quizQuestion = e.target.closest('.quiz-question');
+      const feedbackDiv = quizQuestion.querySelector('.quiz-feedback');
       const correctAnswer = e.target.dataset.correctAnswer || '';
       const explanation = e.target.dataset.explanation || '';
+      
+      // Mark exercise complete
+      const exerciseId = quizQuestion.dataset.exerciseId;
+      const currentChapter = document.body.dataset.chapter;
+      if (exerciseId && currentChapter) {
+        markComplete(currentChapter, exerciseId);
+      }
       
       // Disable all options
       e.target.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(opt => {
@@ -200,6 +214,12 @@ function submitReflection(topicId) {
   if (text.length < 50) {
     alert('Por favor escribe al menos 50 caracteres para reflexionar bien sobre el tema.');
     return;
+  }
+  
+  // Mark exercise complete
+  const currentChapter = document.body.dataset.chapter;
+  if (currentChapter) {
+    markComplete(currentChapter, `${topicId}-reflection`);
   }
   
   // Analyze response for keywords
@@ -283,10 +303,205 @@ function submitReflection(topicId) {
 }
 
 // ==========================================
+// PATTERN 4: DRAG-AND-DROP RANKING
+// ==========================================
+
+let draggedItem = null;
+
+function initializeRanking() {
+  document.querySelectorAll('.ranking-item').forEach(item => {
+    item.addEventListener('dragstart', (e) => {
+      draggedItem = e.target;
+      e.target.style.opacity = '0.5';
+    });
+    
+    item.addEventListener('dragend', (e) => {
+      e.target.style.opacity = '';
+    });
+    
+    item.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
+    
+    item.addEventListener('drop', (e) => {
+      e.preventDefault();
+      if (draggedItem !== e.target) {
+        const container = e.target.closest('.ranking-items');
+        const allItems = [...container.children];
+        const draggedIndex = allItems.indexOf(draggedItem);
+        const targetIndex = allItems.indexOf(e.target);
+        
+        if (draggedIndex < targetIndex) {
+          e.target.after(draggedItem);
+        } else {
+          e.target.before(draggedItem);
+        }
+      }
+    });
+  });
+}
+
+function checkRanking() {
+  const items = document.querySelectorAll('#money-ranking .ranking-item');
+  let correct = 0;
+  let total = items.length;
+  
+  items.forEach((item, index) => {
+    const currentPosition = index + 1;
+    const correctPosition = parseInt(item.dataset.correctPosition);
+    
+    if (currentPosition === correctPosition) {
+      item.classList.add('correct');
+      correct++;
+    } else {
+      item.classList.add('incorrect');
+    }
+  });
+  
+  const feedbackDiv = document.getElementById('ranking-feedback');
+  const percentage = (correct / total) * 100;
+  
+  let feedback = `
+    <div class="ranking-results">
+      <h5>📊 Resultado: ${correct}/${total} correctos (${percentage.toFixed(0)}%)</h5>
+  `;
+  
+  if (percentage === 100) {
+    feedback += `
+      <div class="feedback-excellent">
+        🎉 <strong>¡Perfecto!</strong><br>
+        Entendiste completamente la escalera de dureza monetaria. Bitcoin en la cima (SF → ∞), seguido por oro (SF 66), luego plata, y las formas primitivas al final.
+      </div>
+    `;
+  } else if (percentage >= 70) {
+    feedback += `
+      <div class="feedback-good">
+        ✅ <strong>Muy bien!</strong><br>
+        Tienes la idea general. Recuerda: mientras MAYOR el Stock-to-Flow, más "duro" (escaso) es el dinero.
+      </div>
+    `;
+  } else {
+    feedback += `
+      <div class="feedback-needs-work">
+        💡 <strong>Revisemos el concepto...</strong><br>
+        Stock-to-Flow = años que tomaría duplicar la oferta actual. Mayor SF = más duro = mejor dinero a largo plazo.
+      </div>
+    `;
+  }
+  
+  feedback += `
+      <div class="correct-ranking">
+        <h6>Orden correcto:</h6>
+        <ol>
+          <li><strong>Bitcoin</strong> (SF → ∞ en 2140)</li>
+          <li><strong>Oro</strong> (SF 66 años)</li>
+          <li><strong>Plata</strong> (SF 22 años)</li>
+          <li><strong>Ganado</strong> (SF 3-5 años)</li>
+          <li><strong>Conchas</strong> (SF variable)</li>
+          <li><strong>Cacao</strong> (SF ~1 año)</li>
+          <li><strong>Frutas</strong> (SF ~0.1 año)</li>
+        </ol>
+      </div>
+    </div>
+  `;
+  
+  feedbackDiv.innerHTML = feedback;
+  feedbackDiv.classList.remove('hidden');
+}
+
+// ==========================================
+// PROGRESS TRACKING
+// ==========================================
+
+const progress = {
+  cap1: {},
+  cap2: {},
+  cap3: {},
+  cap4: {}
+};
+
+function loadProgress() {
+  const saved = localStorage.getItem('courseProgress');
+  if (saved) {
+    Object.assign(progress, JSON.parse(saved));
+  }
+}
+
+function markComplete(chapter, exercise) {
+  progress[chapter][exercise] = true;
+  localStorage.setItem('courseProgress', JSON.stringify(progress));
+  updateProgressBar();
+  checkForBadge(chapter);
+}
+
+function updateProgressBar() {
+  const currentChapter = document.body.dataset.chapter;
+  if (!currentChapter) return;
+  
+  const chapterProgress = progress[currentChapter] || {};
+  const totalExercises = document.querySelectorAll('[data-exercise-id]').length;
+  const completed = Object.values(chapterProgress).filter(Boolean).length;
+  const percentage = totalExercises > 0 ? (completed / totalExercises) * 100 : 0;
+  
+  const progressBar = document.querySelector('.progress-fill');
+  if (progressBar) {
+    progressBar.style.width = `${percentage}%`;
+  }
+}
+
+function checkForBadge(chapter) {
+  const chapterProgress = progress[chapter];
+  const totalExercises = document.querySelectorAll('[data-exercise-id]').length;
+  const completed = Object.values(chapterProgress).filter(Boolean).length;
+  
+  if (completed === totalExercises && totalExercises > 0) {
+    showBadgeAnimation(chapter);
+  }
+}
+
+function showBadgeAnimation(chapter) {
+  const badges = {
+    cap1: { emoji: '🎓', name: 'Dinero Maestro' },
+    cap2: { emoji: '📜', name: 'Historiador' },
+    cap3: { emoji: '⛏️', name: 'Buscador de Oro' },
+    cap4: { emoji: '💸', name: 'Experto Fiat' }
+  };
+  
+  const badge = badges[chapter];
+  if (!badge) return;
+  
+  const popup = document.createElement('div');
+  popup.className = 'badge-popup';
+  popup.innerHTML = `
+    <div class="badge-content">
+      <div class="badge-emoji">${badge.emoji}</div>
+      <h3>¡Insignia Desbloqueada!</h3>
+      <p class="badge-name">${badge.name}</p>
+      <p>Completaste todos los ejercicios de ${chapter.toUpperCase()}</p>
+      <button onclick="closeBadgePopup()" class="button primary">Continuar</button>
+    </div>
+  `;
+  
+  document.body.appendChild(popup);
+  setTimeout(() => popup.classList.add('show'), 100);
+}
+
+function closeBadgePopup() {
+  const popup = document.querySelector('.badge-popup');
+  if (popup) {
+    popup.classList.remove('show');
+    setTimeout(() => popup.remove(), 300);
+  }
+}
+
+// ==========================================
 // INITIALIZATION
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  loadProgress();
   initializeStarRatings();
   initializeQuizzes();
+  initializeRanking();
+  updateProgressBar();
 });

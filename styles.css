@@ -1607,6 +1607,152 @@ tr.highlight {
   cursor: not-allowed;
 }
 
+/* Ranking Exercise */
+.ranking-exercise {
+  background: var(--light-gray);
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+
+.ranking-items {
+  background: #F9FAFB;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.ranking-item {
+  background: var(--white);
+  padding: 12px 16px;
+  margin: 8px 0;
+  border: 2px solid var(--border-gray);
+  border-radius: 6px;
+  cursor: move;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.ranking-item:hover {
+  border-color: var(--bitcoin-orange);
+  transform: scale(1.02);
+}
+
+.ranking-item.correct {
+  border-color: var(--success-green);
+  background: #E8F5E9;
+}
+
+.ranking-item.incorrect {
+  border-color: #DC3545;
+  background: #FFEBEE;
+}
+
+.drag-handle {
+  color: #9CA3AF;
+  font-size: 20px;
+  cursor: grab;
+}
+
+.ranking-item:active .drag-handle {
+  cursor: grabbing;
+}
+
+.correct-ranking {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: var(--white);
+  border-radius: 8px;
+  border-left: 4px solid var(--success-green);
+}
+
+.correct-ranking ol {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.correct-ranking li {
+  margin: 0.5rem 0;
+}
+
+/* Badge Popup */
+.badge-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.badge-popup.show {
+  opacity: 1;
+}
+
+.badge-content {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 400px;
+  animation: bounceIn 0.5s;
+}
+
+.badge-emoji {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: rotate 1s;
+}
+
+.badge-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bitcoin-orange);
+  margin: 1rem 0;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.feedback-excellent,
+.feedback-good,
+.feedback-needs-work {
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+.feedback-excellent {
+  background: #E8F5E9;
+  border-left: 4px solid var(--success-green);
+}
+
+.feedback-good {
+  background: #FFF9E6;
+  border-left: 4px solid var(--bitcoin-orange);
+}
+
+.feedback-needs-work {
+  background: #FEF3C7;
+  border-left: 4px solid #F59E0B;
+}
+
 /* Mobile Responsiveness for Gamification */
 @media (max-width: 768px) {
   .star {
@@ -1615,15 +1761,30 @@ tr.highlight {
   
   .quiz-option {
     padding: 0.75rem 1rem;
+    font-size: 15px;
   }
   
   .comparison-card,
   .quiz-question,
-  .reflection-exercise {
+  .reflection-exercise,
+  .ranking-exercise {
     padding: 1.5rem;
   }
   
   .final-score {
     padding: 1.5rem;
+  }
+  
+  .ranking-item {
+    padding: 10px 12px;
+  }
+  
+  .badge-content {
+    padding: 30px 20px;
+    margin: 1rem;
+  }
+  
+  .badge-emoji {
+    font-size: 60px;
   }
 }

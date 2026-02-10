@@ -7,7 +7,7 @@
     <title>Cap 1: Dinero - Aprender Bitcoin</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-chapter="cap1">
     <nav class="navbar">
         <div class="container">
             <div class="logo">
@@ -133,41 +133,53 @@
                 <p class="section-intro">Reflexiona sobre estas preguntas después de ver el video.</p>
                 
                 <div class="questions">
-                    <div class="question-box">
+                    <div class="quiz-question" data-exercise-id="trueque-quiz">
                         <h4>1. ¿Por qué el trueque es ineficiente?</h4>
-                        <details>
-                            <summary>Ver análisis guiado</summary>
-                            <p><strong>El problema:</strong> Requiere "doble coincidencia de necesidades"</p>
-                            <p><strong>Ejemplo mexicano:</strong> Un plomero necesita reparar su coche, pero el mecánico no necesita plomería. El plomero debe:</p>
-                            <ol>
-                                <li>Encontrar alguien que necesite plomería Y tenga lo que el mecánico quiere</li>
-                                <li>Hacer 2+ trueques indirectos (plomería → X → servicio mecánico)</li>
-                                <li>Perder tiempo, energía y oportunidades</li>
-                            </ol>
-                            <p><strong>Con dinero:</strong> Plomero cobra en pesos, mecánico cobra en pesos. Simple, directo, eficiente.</p>
-                        </details>
+                        
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="false"
+                                    data-explanation="No es el problema principal. Aunque contar puede tomar tiempo, el problema real es más fundamental.">
+                                Es muy lento contar los bienes intercambiados
+                            </button>
+                            <button class="quiz-option" data-correct="true"
+                                    data-explanation="El trueque requiere que ambas partes quieran exactamente lo que la otra ofrece - una coincidencia rara y difícil. El dinero elimina este problema al servir como intermediario universal. Ejemplo: Un plomero necesita reparar su coche, pero el mecánico no necesita plomería. Con pesos, ambos simplemente cobran y pagan en dinero.">
+                                Requiere "doble coincidencia de necesidades"
+                            </button>
+                            <button class="quiz-option" data-correct="false"
+                                    data-explanation="Los bienes tienen valores relativos, pero ese no es el problema principal del trueque.">
+                                Los bienes no siempre tienen el mismo valor
+                            </button>
+                            <button class="quiz-option" data-correct="false"
+                                    data-explanation="Encontrar personas es parte del problema, pero no la raíz. La raíz es que necesitas doble coincidencia de necesidades.">
+                                Es difícil encontrar personas con quien intercambiar
+                            </button>
+                        </div>
+                        
+                        <div class="quiz-feedback hidden"></div>
                     </div>
 
-                    <div class="question-box">
+                    <div class="reflection-exercise" data-exercise-id="bateria-reflection">
                         <h4>2. ¿El peso mexicano es una "batería" confiable?</h4>
-                        <details>
-                            <summary>Ver análisis guiado</summary>
-                            <p><strong>Analogía perfecta:</strong></p>
-                            <ul>
-                                <li><strong>Batería buena:</strong> Retiene carga durante meses/años</li>
-                                <li><strong>Batería mala:</strong> Se descarga sola aunque no la uses</li>
-                            </ul>
-                            <p><strong>El peso mexicano:</strong></p>
-                            <ul>
-                                <li>Inflación promedio 2020-2024: ~5% anual</li>
-                                <li>Significa: Tu dinero pierde 5% de poder de compra cada año, automáticamente</li>
-                                <li>Es como una batería que se descarga 5% anual sin usarla</li>
-                            </ul>
-                            <p><strong>Pregunta clave:</strong> ¿Confiarías en una batería que pierde 5% de carga por año sin tocarla?</p>
-                        </details>
+                        
+                        <p><strong>Contexto:</strong> El dinero funciona como "batería de valor" - guarda tu trabajo hoy para usarlo mañana.</p>
+                        
+                        <div class="reflection-input">
+                            <textarea 
+                                placeholder="Escribe tu reflexión aquí (mínimo 50 caracteres). Considera: ¿Retiene el peso su valor? ¿Qué pasa con la inflación? ¿Es confiable para ahorros a largo plazo?"
+                                rows="5"
+                                id="reflection-peso"
+                            ></textarea>
+                            <button class="button primary" onclick="submitReflection('peso')">
+                                Enviar Reflexión
+                            </button>
+                        </div>
+                        
+                        <div id="reflection-peso-feedback" class="hidden">
+                            <!-- Feedback appears here -->
+                        </div>
                     </div>
 
-                    <div class="interactive-rating-table">
+                    <div class="interactive-rating-table" data-exercise-id="characteristics-rating">
                         <h4>3. Ejercicio Interactivo: Evalúa al peso con las 6 características</h4>
                         <p><strong>Instrucciones:</strong> Califica cada característica de 1 a 5 estrellas. Después de calificar todas, haz clic en "Ver Evaluación Experta" para comparar tu análisis.</p>
                         
