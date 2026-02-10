@@ -23,6 +23,15 @@
 
     <main class="chapter-page">
         <div class="container">
+            <!-- Breadcrumb Navigation -->
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html#capitulos">Capítulos</a>
+                <span class="separator">›</span>
+                <span class="current">Capítulo 1: Dinero</span>
+            </nav>
+
             <!-- Chapter Header -->
             <div class="chapter-header">
                 <span class="chapter-number">Capítulo 1</span>
@@ -30,9 +39,49 @@
                 <p class="chapter-intro">¿Qué es realmente el dinero? Descubre cómo el dinero funciona como una batería que almacena tu tiempo y energía, y cuáles son las 6 características que hacen que algo sea buen dinero.</p>
             </div>
 
+            <!-- Progress Bar -->
+            <div class="chapter-progress">
+                <div class="time-estimate">
+                    ⏱️ <strong>Tiempo total:</strong> 45-60 minutos 
+                    <span class="optional-note">(15 min opcionales)</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-step" data-section="pre">
+                        <span class="step-icon">📖</span>
+                        <span class="step-label">Pre-lectura</span>
+                        <span class="step-time">5 min</span>
+                    </div>
+                    <div class="progress-step" data-section="video">
+                        <span class="step-icon">🎥</span>
+                        <span class="step-label">Video</span>
+                        <span class="step-time">11 min</span>
+                    </div>
+                    <div class="progress-step" data-section="discussion">
+                        <span class="step-icon">💬</span>
+                        <span class="step-label">Discusión</span>
+                        <span class="step-time">10 min</span>
+                    </div>
+                    <div class="progress-step optional" data-section="deep">
+                        <span class="step-icon">🔬</span>
+                        <span class="step-label">Profundo</span>
+                        <span class="step-time">15 min</span>
+                    </div>
+                    <div class="progress-step" data-section="case">
+                        <span class="step-icon">🇲🇽</span>
+                        <span class="step-label">Caso MX</span>
+                        <span class="step-time">8 min</span>
+                    </div>
+                    <div class="progress-step" data-section="exercise">
+                        <span class="step-icon">🎯</span>
+                        <span class="step-label">Ejercicio</span>
+                        <span class="step-time">5 min</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- Pre-lectura -->
-            <section class="content-section prelectura">
-                <h2>📖 Pre-lectura (5 minutos)</h2>
+            <section class="content-section prelectura" id="pre">
+                <h2>📖 Pre-lectura <span style="color: #666; font-weight: normal;">(5 minutos)</span></h2>
                 <p class="section-intro">Lee esto ANTES de ver el video para aprovechar mejor el contenido.</p>
                 
                 <div class="content-box">
@@ -71,16 +120,16 @@
             </section>
 
             <!-- Video -->
-            <section class="content-section video-section">
-                <h2>🎥 Video Principal (~11 minutos)</h2>
+            <section class="content-section video-section" id="video">
+                <h2>🎥 Video Principal <span style="color: #666; font-weight: normal;">(11 minutos)</span></h2>
                 <div class="video-container">
                     <iframe width="100%" height="500" src="https://www.youtube.com/embed/VWTfcOmjfhA" title="Cap 1 - ¿Qué es el dinero?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </section>
 
             <!-- Preguntas de Discusión -->
-            <section class="content-section discussion">
-                <h2>💬 Preguntas de Discusión</h2>
+            <section class="content-section discussion" id="discussion">
+                <h2>💬 Preguntas de Discusión <span style="color: #666; font-weight: normal;">(10 minutos)</span></h2>
                 <p class="section-intro">Reflexiona sobre estas preguntas después de ver el video.</p>
                 
                 <div class="questions">
@@ -168,8 +217,12 @@
             </section>
 
             <!-- Profundización -->
-            <section class="content-section deepdive">
-                <h2>🔬 Profundización: Dinero como Tiempo Almacenado</h2>
+            <section class="content-section deepdive optional-section" id="deep">
+                <span class="badge">AVANZADO - OPCIONAL</span>
+                <h2>🔬 Profundización: Dinero como Tiempo Almacenado <span style="color: #666; font-weight: normal;">(15 minutos)</span></h2>
+                <p class="skip-note">
+                    💡 <em>Principiantes: Pueden saltar esta sección y volver después</em>
+                </p>
                 <p class="section-intro">Concepto avanzado que cambia tu perspectiva sobre el dinero.</p>
                 
                 <div class="content-box">
@@ -232,8 +285,8 @@
             </section>
 
             <!-- Caso México -->
-            <section class="content-section case-study">
-                <h2>🇲🇽 Caso de Estudio: ArcadiaB - El Dilema de Carlos</h2>
+            <section class="content-section case-study" id="case">
+                <h2>🇲🇽 Caso de Estudio: ArcadiaB - El Dilema de Carlos <span style="color: #666; font-weight: normal;">(8 minutos)</span></h2>
                 
                 <div class="content-box">
                     <h3>La situación</h3>
@@ -306,8 +359,8 @@
             </section>
 
             <!-- Ejercicio Práctico -->
-            <section class="content-section exercise">
-                <h2>🎯 Ejercicio Práctico: Calculadora de Inflación Personal</h2>
+            <section class="content-section exercise" id="exercise">
+                <h2>🎯 Ejercicio Práctico: Calculadora de Inflación Personal <span style="color: #666; font-weight: normal;">(5 minutos)</span></h2>
                 <p class="section-intro">Descubre cuánto tiempo de vida perdiste por inflación.</p>
                 
                 <div class="calculator">
@@ -421,5 +474,30 @@
             document.getElementById('results').style.display = 'block';
         }
     </script>
+
+    <!-- Sticky ArcadiaB CTA -->
+    <div class="sticky-cta" id="stickyArcadiaCTA">
+        <div class="cta-content">
+            <span class="cta-icon">💰</span>
+            <span class="cta-text">¿Ya tienes Bitcoin? Obtén liquidez sin vender</span>
+            <a href="https://arcadiab.com" target="_blank" class="cta-button">Conocer B2X →</a>
+            <button class="cta-close" onclick="document.getElementById('stickyArcadiaCTA').style.display='none'">✕</button>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-chapter-nav">
+        <a href="index.html" class="nav-button home">
+            <span class="icon">⌂</span>
+            <span class="label">Inicio</span>
+        </a>
+        <a href="cap02.html" class="nav-button next">
+            <span class="label">Cap 2</span>
+            <span class="icon">→</span>
+        </a>
+    </nav>
+
+    <!-- Chapter Interactive Features -->
+    <script src="chapter.js"></script>
 </body>
 </html>
