@@ -511,6 +511,115 @@ function submitReflectionCacao() {
   textarea.disabled = true;
 }
 
+// Custom reflection handler for fiat cost (Cap 4)
+function submitReflectionFiat() {
+  const textarea = document.getElementById('reflection-fiat');
+  const text = textarea.value.trim();
+  const feedbackDiv = document.getElementById('reflection-fiat-feedback');
+  
+  if (text.length < 50) {
+    alert('Por favor escribe al menos 50 caracteres para reflexionar bien sobre el tema.');
+    return;
+  }
+  
+  // Mark exercise complete
+  const currentChapter = document.body.dataset.chapter;
+  if (currentChapter) {
+    markComplete(currentChapter, 'fiat-cost-reflection');
+  }
+  
+  // Analyze response for keywords
+  const keywords = {
+    unfair: ['injusto', 'desigual', 'inequitativo', 'robo', 'estafa'],
+    systemic: ['sistema', 'diseño', 'intencional', 'estructural'],
+    victims: ['clase media', 'trabajadores', 'pobres', 'ahorradores', 'jubilados'],
+    beneficiaries: ['gobierno', 'bancos', 'ricos', 'elite', 'conectados']
+  };
+  
+  const lowerText = text.toLowerCase();
+  const hasUnfair = keywords.unfair.some(word => lowerText.includes(word));
+  const hasSystemic = keywords.systemic.some(word => lowerText.includes(word));
+  const hasVictims = keywords.victims.some(word => lowerText.includes(word));
+  const hasBeneficiaries = keywords.beneficiaries.some(word => lowerText.includes(word));
+  
+  let feedback = `
+    <div class="guided-feedback">
+      <h5>💭 Tu reflexión:</h5>
+      <div class="user-reflection">${text}</div>
+      <h5>🎓 Análisis guiado:</h5>
+  `;
+  
+  if (hasUnfair && (hasVictims || hasBeneficiaries)) {
+    feedback += `
+      <p>¡Excelente análisis! Identificaste el problema moral del sistema fiat.</p>
+      <div class="affirmation">
+        <strong>✅ Puntos clave que captaste:</strong>
+        <ul>
+          <li><strong>Injusticia estructural:</strong> El sistema beneficia a quienes están más cerca de la "impresora"</li>
+          <li><strong>Efecto Cantillon:</strong> Los primeros en recibir dinero nuevo compran a precios viejos; los últimos pagan precios inflados</li>
+          <li><strong>Desigualdad creciente:</strong> Desde 1971 (Nixon Shock), la brecha rico-pobre explotó</li>
+        </ul>
+      </div>
+      <div class="next-level">
+        <strong>🚀 Próximo nivel:</strong>
+        <p>Bitcoin elimina este problema: NADIE puede imprimir más Bitcoin. La oferta es fija (21 millones). No hay "primeros" ni "últimos" - todos juegan con las mismas reglas.</p>
+      </div>
+    `;
+  } else if (hasVictims) {
+    feedback += `
+      <p>Bien! Identificaste a las víctimas del sistema.</p>
+      <div class="exploration">
+        <strong>Ahora considera:</strong>
+        <p>Los trabajadores, ahorradores y clase media SIEMPRE reciben el dinero nuevo AL FINAL - después de que los precios ya subieron. Mientras tanto, gobierno y bancos lo gastan PRIMERO cuando todavía tiene poder de compra completo.</p>
+        <p><strong>¿Es esto justo?</strong> ¿O es un robo silencioso disfrazado de "política monetaria"?</p>
+      </div>
+    `;
+  } else if (hasSystemic) {
+    feedback += `
+      <p>Bien! Reconociste que es un problema sistémico.</p>
+      <div class="exploration">
+        <strong>El mecanismo:</strong>
+        <ul>
+          <li>Gobierno necesita más dinero → imprime en vez de cobrar impuestos</li>
+          <li>Banco central compra deuda gubernamental con dinero nuevo</li>
+          <li>Gobierno y bancos gastan primero (precios aún bajos)</li>
+          <li>Cuando ese dinero llega a trabajadores/clase media, precios ya subieron</li>
+          <li><strong>Resultado:</strong> Transferencia silenciosa de riqueza de abajo hacia arriba</li>
+        </ul>
+      </div>
+    `;
+  } else {
+    feedback += `
+      <p>Interesante perspectiva. Profundicemos:</p>
+      <div class="counterpoint">
+        <strong>📉 Los datos:</strong>
+        <p><strong>1971:</strong> Nixon rompe patrón oro → gobierno puede imprimir sin límite</p>
+        <p><strong>Desde entonces:</strong></p>
+        <ul>
+          <li>Costo de casa: +700%</li>
+          <li>Costo de universidad: +1,200%</li>
+          <li>Salarios reales: +10% (casi planos)</li>
+          <li>Top 1% controla más riqueza que el 90% inferior</li>
+        </ul>
+        <p><strong>¿Coincidencia?</strong> No. El dinero fiat permite que gobierno y bancos extraigan valor del resto de la sociedad sin pedirpermiso.</p>
+      </div>
+    `;
+  }
+  
+  feedback += `
+    <div class="key-insight">
+      <strong>💡 Lección clave:</strong>
+      <p>El dinero fiat es un <strong>impuesto oculto</strong> sobre quienes no pueden protegerse. Los ricos compran activos (oro, inmuebles, Bitcoin). La clase media guarda en banco y ve su valor derretirse. Esto NO es accidente - es diseño.</p>
+      <p><strong>Bitcoin:</strong> Oferta fija de 21 millones. Nadie puede imprimir más. Todos juegan con las mismas reglas. Fin del robo silencioso.</p>
+    </div>
+    </div>
+  `;
+  
+  feedbackDiv.innerHTML = feedback;
+  feedbackDiv.classList.remove('hidden');
+  textarea.disabled = true;
+}
+
 // ==========================================
 // PROGRESS TRACKING
 // ==========================================

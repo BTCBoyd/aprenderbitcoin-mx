@@ -7,7 +7,7 @@
     <title>Cap 4: Fiat - Aprender Bitcoin</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-chapter="cap4">
     <nav class="navbar">
         <div class="container">
             <div class="logo">
@@ -379,34 +379,45 @@
                         </details>
                     </div>
 
-                    <div class="question-box">
-                        <h4>5. ¿Quién se beneficia del dinero fiat?</h4>
-                        <details>
-                            <summary>Ver análisis</summary>
-                            <p><strong>Los que reciben dinero nuevo PRIMERO:</strong></p>
-                            
-                            <div class="good-option">
-                                <p><strong>Beneficiados:</strong></p>
-                                <ul>
-                                    <li>Gobierno (imprime para pagar deudas)</li>
-                                    <li>Bancos (reciben dinero nuevo a tasa preferencial)</li>
-                                    <li>Grandes empresas (acceso a crédito barato)</li>
-                                    <li>Dueños de activos (inmuebles, acciones suben con inflación)</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bad-option">
-                                <p><strong>Perjudicados:</strong></p>
-                                <ul>
-                                    <li>Ahorradores (dinero en banco pierde valor)</li>
-                                    <li>Trabajadores (salarios suben más lento que precios)</li>
-                                    <li>Jubilados (pensión fija se devalúa)</li>
-                                    <li>Clase media (atrapada entre inflación y salarios estancados)</li>
-                                </ul>
-                            </div>
-                            
-                            <p><strong>Pregunta:</strong> ¿Es coincidencia que la desigualdad haya explotado desde 1971?</p>
-                        </details>
+                    <div class="reflection-exercise" data-exercise-id="fiat-cost-reflection">
+                        <h4>5. ¿Quién paga el costo del dinero fiat?</h4>
+                        
+                        <p><strong>Contexto:</strong> Cuando el gobierno imprime dinero nuevo, algunos se benefician y otros pagan el costo.</p>
+                        
+                        <div class="good-option">
+                            <p><strong>Beneficiados (reciben dinero nuevo PRIMERO):</strong></p>
+                            <ul>
+                                <li>Gobierno (imprime para pagar deudas)</li>
+                                <li>Bancos (reciben dinero nuevo a tasa preferencial)</li>
+                                <li>Grandes empresas (acceso a crédito barato)</li>
+                                <li>Dueños de activos (inmuebles, acciones suben con inflación)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bad-option">
+                            <p><strong>Perjudicados (reciben dinero ÚLTIMO):</strong></p>
+                            <ul>
+                                <li>Ahorradores (dinero en banco pierde valor)</li>
+                                <li>Trabajadores (salarios suben más lento que precios)</li>
+                                <li>Jubilados (pensión fija se devalúa)</li>
+                                <li>Clase media (atrapada entre inflación y salarios estancados)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="reflection-input">
+                            <textarea 
+                                placeholder="Escribe tu reflexión (mínimo 50 caracteres): ¿Es justo este sistema? ¿Quién realmente paga por la inflación? ¿Es coincidencia que la desigualdad haya explotado desde 1971?"
+                                rows="5"
+                                id="reflection-fiat"
+                            ></textarea>
+                            <button class="button primary" onclick="submitReflectionFiat()">
+                                Enviar Reflexión
+                            </button>
+                        </div>
+                        
+                        <div id="reflection-fiat-feedback" class="hidden">
+                            <!-- Feedback appears here -->
+                        </div>
                     </div>
                 </div>
             </section>
@@ -778,5 +789,6 @@
 
     <!-- Chapter Interactive Features -->
     <script src="chapter.js"></script>
+    <script src="gamification.js"></script>
 </body>
 </html>

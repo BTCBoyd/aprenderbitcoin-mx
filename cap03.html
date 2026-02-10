@@ -7,7 +7,7 @@
     <title>Cap 3: Oro - Aprender Bitcoin</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-chapter="cap3">
     <nav class="navbar">
         <div class="container">
             <div class="logo">
@@ -244,19 +244,30 @@
                         </details>
                     </div>
 
-                    <div class="question-box">
-                        <h4>3. ¿Por qué 26/30 y no 30/30?</h4>
-                        <details>
-                            <summary>Ver análisis</summary>
-                            <p><strong>El problema: Portabilidad limitada (3/5)</strong></p>
-                            <ul>
-                                <li>1 kg de oro = $60,000 USD (pesado)</li>
-                                <li>Transportar $1M en oro = 16.6 kg (mochila muy pesada)</li>
-                                <li>Transportar $1M en Bitcoin = 12 palabras (en tu cabeza)</li>
-                            </ul>
-                            <p><strong>Pregunta crítica:</strong> ¿Puede un dinero ser "casi perfecto" y aún así fallar?</p>
-                            <p><strong>Respuesta:</strong> Sí, porque esa única debilidad (portabilidad) llevó a la centralización, que eventualmente fue explotada.</p>
-                        </details>
+                    <div class="quiz-question" data-exercise-id="gold-score-quiz">
+                        <h4>3. ¿Por qué el oro obtiene 26/30 y no 30/30?</h4>
+                        <p><strong>¿Cuál es la debilidad principal del oro que le impide obtener puntuación perfecta?</strong></p>
+                        
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="false"
+                                    data-explanation="La escasez del oro es excelente (SF 66 años) - esa NO es su debilidad. El oro es muy escaso.">
+                                Escasez insuficiente
+                            </button>
+                            <button class="quiz-option" data-correct="true"
+                                    data-explanation="¡Correcto! Portabilidad limitada (3/5) es el problema. 1 kg de oro = $60,000 USD (pesado). Transportar $1M en oro = 16.6 kg (mochila muy pesada). Transportar $1M en Bitcoin = 12 palabras (en tu cabeza). PREGUNTA CRÍTICA: ¿Puede un dinero ser 'casi perfecto' y aún así fallar? SÍ, porque esa única debilidad (portabilidad) llevó a la centralización en bancos, que eventualmente fue explotada.">
+                                Portabilidad limitada
+                            </button>
+                            <button class="quiz-option" data-correct="false"
+                                    data-explanation="La fungibilidad del oro es excelente - una onza es una onza. Ese no es el problema.">
+                                Fungibilidad imperfecta
+                            </button>
+                            <button class="quiz-option" data-correct="false"
+                                    data-explanation="El oro es extremadamente durable - dura miles de años. La durabilidad NO es el problema.">
+                                Se deteriora con el tiempo
+                            </button>
+                        </div>
+                        
+                        <div class="quiz-feedback hidden"></div>
                     </div>
 
                     <div class="question-box">
@@ -756,5 +767,6 @@
 
     <!-- Chapter Interactive Features -->
     <script src="chapter.js"></script>
+    <script src="gamification.js"></script>
 </body>
 </html>
