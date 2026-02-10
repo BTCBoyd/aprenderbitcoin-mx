@@ -167,50 +167,114 @@
                         </details>
                     </div>
 
-                    <div class="question-box">
-                        <h4>3. Ejercicio: Evalúa al peso con las 6 características</h4>
+                    <div class="interactive-rating-table">
+                        <h4>3. Ejercicio Interactivo: Evalúa al peso con las 6 características</h4>
+                        <p><strong>Instrucciones:</strong> Califica cada característica de 1 a 5 estrellas. Después de calificar todas, haz clic en "Ver Evaluación Experta" para comparar tu análisis.</p>
+                        
                         <div class="evaluation-table">
                             <table>
                                 <thead>
                                     <tr>
                                         <th>Característica</th>
-                                        <th>¿El peso cumple? (1-5 ⭐)</th>
+                                        <th>Tu Evaluación (1-5 ⭐)</th>
                                         <th>Comentario</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Durabilidad</td>
-                                        <td><em>(Tu respuesta)</em></td>
-                                        <td>¿Los billetes se desgastan? ¿Qué pasa si se mojan?</td>
+                                    <tr data-characteristic="durabilidad">
+                                        <td><strong>Durabilidad</strong></td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <button class="star" data-value="1">⭐</button>
+                                                <button class="star" data-value="2">⭐</button>
+                                                <button class="star" data-value="3">⭐</button>
+                                                <button class="star" data-value="4">⭐</button>
+                                                <button class="star" data-value="5">⭐</button>
+                                            </div>
+                                            <span class="selected-rating">—</span>
+                                        </td>
+                                        <td class="comment-hint">¿Los billetes se desgastan? ¿Qué pasa si se mojan?</td>
                                     </tr>
-                                    <tr>
-                                        <td>Portabilidad</td>
-                                        <td><em>(Tu respuesta)</em></td>
-                                        <td>¿Fácil llevar $10,000 pesos en efectivo?</td>
+                                    <tr data-characteristic="portabilidad">
+                                        <td><strong>Portabilidad</strong></td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <button class="star" data-value="1">⭐</button>
+                                                <button class="star" data-value="2">⭐</button>
+                                                <button class="star" data-value="3">⭐</button>
+                                                <button class="star" data-value="4">⭐</button>
+                                                <button class="star" data-value="5">⭐</button>
+                                            </div>
+                                            <span class="selected-rating">—</span>
+                                        </td>
+                                        <td class="comment-hint">¿Fácil llevar $10,000 pesos en efectivo?</td>
                                     </tr>
-                                    <tr>
-                                        <td>Divisibilidad</td>
-                                        <td><em>(Tu respuesta)</em></td>
-                                        <td>¿Puedes partir un billete de $500 en dos de $250?</td>
+                                    <tr data-characteristic="divisibilidad">
+                                        <td><strong>Divisibilidad</strong></td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <button class="star" data-value="1">⭐</button>
+                                                <button class="star" data-value="2">⭐</button>
+                                                <button class="star" data-value="3">⭐</button>
+                                                <button class="star" data-value="4">⭐</button>
+                                                <button class="star" data-value="5">⭐</button>
+                                            </div>
+                                            <span class="selected-rating">—</span>
+                                        </td>
+                                        <td class="comment-hint">¿Puedes partir un billete de $500 en dos de $250?</td>
                                     </tr>
-                                    <tr>
-                                        <td>Fungibilidad</td>
-                                        <td><em>(Tu respuesta)</em></td>
-                                        <td>¿Un billete de $100 vale igual que otro?</td>
+                                    <tr data-characteristic="fungibilidad">
+                                        <td><strong>Fungibilidad</strong></td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <button class="star" data-value="1">⭐</button>
+                                                <button class="star" data-value="2">⭐</button>
+                                                <button class="star" data-value="3">⭐</button>
+                                                <button class="star" data-value="4">⭐</button>
+                                                <button class="star" data-value="5">⭐</button>
+                                            </div>
+                                            <span class="selected-rating">—</span>
+                                        </td>
+                                        <td class="comment-hint">¿Un billete de $100 vale igual que otro?</td>
                                     </tr>
-                                    <tr>
-                                        <td>Escasez</td>
-                                        <td><em>(Tu respuesta)</em></td>
-                                        <td>¿Banxico puede imprimir más pesos?</td>
+                                    <tr data-characteristic="escasez">
+                                        <td><strong>Escasez</strong></td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <button class="star" data-value="1">⭐</button>
+                                                <button class="star" data-value="2">⭐</button>
+                                                <button class="star" data-value="3">⭐</button>
+                                                <button class="star" data-value="4">⭐</button>
+                                                <button class="star" data-value="5">⭐</button>
+                                            </div>
+                                            <span class="selected-rating">—</span>
+                                        </td>
+                                        <td class="comment-hint">¿Banxico puede imprimir más pesos?</td>
                                     </tr>
-                                    <tr>
-                                        <td>Verificabilidad</td>
-                                        <td><em>(Tu respuesta)</em></td>
-                                        <td>¿Fácil detectar billetes falsos?</td>
+                                    <tr data-characteristic="verificabilidad">
+                                        <td><strong>Verificabilidad</strong></td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <button class="star" data-value="1">⭐</button>
+                                                <button class="star" data-value="2">⭐</button>
+                                                <button class="star" data-value="3">⭐</button>
+                                                <button class="star" data-value="4">⭐</button>
+                                                <button class="star" data-value="5">⭐</button>
+                                            </div>
+                                            <span class="selected-rating">—</span>
+                                        </td>
+                                        <td class="comment-hint">¿Fácil detectar billetes falsos?</td>
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        
+                        <button id="show-evaluation" class="button primary" disabled>
+                            Ver Evaluación Experta
+                        </button>
+                        
+                        <div id="evaluation-results" class="hidden">
+                            <!-- Results populate here via JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -499,5 +563,6 @@
 
     <!-- Chapter Interactive Features -->
     <script src="chapter.js"></script>
+    <script src="gamification.js"></script>
 </body>
 </html>
