@@ -23,6 +23,15 @@
 
     <main class="chapter-page">
         <div class="container">
+            <!-- Breadcrumb Navigation -->
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <span class="separator">›</span>
+                <a href="index.html#capitulos">Capítulos</a>
+                <span class="separator">›</span>
+                <span class="current">Capítulo 3: Oro</span>
+            </nav>
+
             <!-- Chapter Header -->
             <div class="chapter-header">
                 <span class="chapter-number">Capítulo 3</span>
@@ -30,9 +39,49 @@
                 <p class="chapter-intro">El oro dominó como dinero durante milenios. Descubre por qué fue superior a todas las formas primitivas... y cuál es su talón de Aquiles que eventualmente llevó a su caída.</p>
             </div>
 
+            <!-- Progress Bar -->
+            <div class="chapter-progress">
+                <div class="time-estimate">
+                    ⏱️ <strong>Tiempo total:</strong> 45-60 minutos 
+                    <span class="optional-note">(15 min opcionales)</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-step" data-section="pre">
+                        <span class="step-icon">📖</span>
+                        <span class="step-label">Pre-lectura</span>
+                        <span class="step-time">5 min</span>
+                    </div>
+                    <div class="progress-step" data-section="video">
+                        <span class="step-icon">🎥</span>
+                        <span class="step-label">Video</span>
+                        <span class="step-time">12 min</span>
+                    </div>
+                    <div class="progress-step" data-section="discussion">
+                        <span class="step-icon">💬</span>
+                        <span class="step-label">Discusión</span>
+                        <span class="step-time">10 min</span>
+                    </div>
+                    <div class="progress-step optional" data-section="deep">
+                        <span class="step-icon">🔬</span>
+                        <span class="step-label">Profundo</span>
+                        <span class="step-time">15 min</span>
+                    </div>
+                    <div class="progress-step" data-section="case">
+                        <span class="step-icon">🇲🇽</span>
+                        <span class="step-label">Caso MX</span>
+                        <span class="step-time">8 min</span>
+                    </div>
+                    <div class="progress-step" data-section="exercise">
+                        <span class="step-icon">🎯</span>
+                        <span class="step-label">Ejercicio</span>
+                        <span class="step-time">5 min</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- Pre-lectura -->
-            <section class="content-section prelectura">
-                <h2>📖 Pre-lectura (5 minutos)</h2>
+            <section class="content-section prelectura" id="pre">
+                <h2>📖 Pre-lectura <span style="color: #666; font-weight: normal;">(5 minutos)</span></h2>
                 <p class="section-intro">Lee esto ANTES de ver el video para aprovechar mejor el contenido.</p>
                 
                 <div class="content-box">
@@ -150,16 +199,16 @@
             </section>
 
             <!-- Video -->
-            <section class="content-section video-section">
-                <h2>🎥 Video Principal (~12 minutos)</h2>
+            <section class="content-section video-section" id="video">
+                <h2>🎥 Video Principal <span style="color: #666; font-weight: normal;">(12 minutos)</span></h2>
                 <div class="video-container">
                     <iframe width="100%" height="500" src="https://www.youtube.com/embed/9w7UiGZxaIk" title="Cap 3 - Oro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </section>
 
             <!-- Preguntas de Discusión -->
-            <section class="content-section discussion">
-                <h2>💬 Preguntas de Discusión</h2>
+            <section class="content-section discussion" id="discussion">
+                <h2>💬 Preguntas de Discusión <span style="color: #666; font-weight: normal;">(10 minutos)</span></h2>
                 <p class="section-intro">Reflexiona sobre estas preguntas después de ver el video.</p>
                 
                 <div class="questions">
@@ -250,8 +299,12 @@
             </section>
 
             <!-- Profundización -->
-            <section class="content-section deepdive">
-                <h2>🔬 Profundización: Stock-to-Flow y la Dureza Monetaria</h2>
+            <section class="content-section deepdive optional-section" id="deep">
+                <span class="badge">AVANZADO - OPCIONAL</span>
+                <h2>🔬 Profundización: Stock-to-Flow y la Dureza Monetaria <span style="color: #666; font-weight: normal;">(15 minutos)</span></h2>
+                <p class="skip-note">
+                    💡 <em>Principiantes: Pueden saltar esta sección y volver después</em>
+                </p>
                 <p class="section-intro">La métrica que explica por qué el oro dominó.</p>
                 
                 <div class="content-box">
@@ -377,8 +430,8 @@
             </section>
 
             <!-- Caso México -->
-            <section class="content-section case-study">
-                <h2>🇲🇽 Caso de Estudio: Las Reservas de Oro de México</h2>
+            <section class="content-section case-study" id="case">
+                <h2>🇲🇽 Caso de Estudio: Las Reservas de Oro de México <span style="color: #666; font-weight: normal;">(8 minutos)</span></h2>
                 
                 <div class="content-box">
                     <h3>El oro del Banco de México</h3>
@@ -525,8 +578,8 @@
             </section>
 
             <!-- Ejercicio Práctico -->
-            <section class="content-section exercise">
-                <h2>🎯 Ejercicio Práctico: Calculadora Stock-to-Flow</h2>
+            <section class="content-section exercise" id="exercise">
+                <h2>🎯 Ejercicio Práctico: Calculadora Stock-to-Flow <span style="color: #666; font-weight: normal;">(5 minutos)</span></h2>
                 <p class="section-intro">Calcula el SF de diferentes bienes y entiende por qué el oro dominó.</p>
                 
                 <div class="calculator">
@@ -674,5 +727,34 @@
             document.getElementById('sfResults').style.display = 'block';
         }
     </script>
+
+    <!-- Sticky ArcadiaB CTA -->
+    <div class="sticky-cta" id="stickyArcadiaCTA">
+        <div class="cta-content">
+            <span class="cta-icon">💰</span>
+            <span class="cta-text">¿Ya tienes Bitcoin? Obtén liquidez sin vender</span>
+            <a href="https://arcadiab.com" target="_blank" class="cta-button">Conocer B2X →</a>
+            <button class="cta-close" onclick="document.getElementById('stickyArcadiaCTA').style.display='none'">✕</button>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-chapter-nav">
+        <a href="cap02.html" class="nav-button prev">
+            <span class="icon">←</span>
+            <span class="label">Cap 2</span>
+        </a>
+        <a href="index.html" class="nav-button home">
+            <span class="icon">⌂</span>
+            <span class="label">Inicio</span>
+        </a>
+        <a href="cap04.html" class="nav-button next">
+            <span class="label">Cap 4</span>
+            <span class="icon">→</span>
+        </a>
+    </nav>
+
+    <!-- Chapter Interactive Features -->
+    <script src="chapter.js"></script>
 </body>
 </html>
