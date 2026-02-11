@@ -1,225 +1,1083 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Educación gratuita sobre Bitcoin para México y Latinoamérica">
-    <title>Aprender Bitcoin - Educación Gratuita sobre Bitcoin</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aprender Bitcoin - Educación Gratuita sobre Bitcoin</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --btc: #F7931A;
+    --btc-glow: rgba(247, 147, 26, 0.15);
+    --btc-dim: rgba(247, 147, 26, 0.08);
+    --dark: #0C0E13;
+    --dark-card: #13161D;
+    --dark-surface: #1A1D26;
+    --dark-border: #252833;
+    --dark-border-light: #2E3140;
+    --text-primary: #ECEAE5;
+    --text-secondary: #9B978E;
+    --text-muted: #646158;
+    --green: #34D399;
+    --green-dim: rgba(52, 211, 153, 0.1);
+    --purple: #A78BFA;
+    --purple-dim: rgba(167, 139, 250, 0.1);
+    --blue: #60A5FA;
+    --blue-dim: rgba(96, 165, 250, 0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    background: var(--dark);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  /* ============================
+     NAV
+     ============================ */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(12, 14, 19, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--dark-border);
+  }
+
+  .nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+
+  .nav-brand .btc-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--btc);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #fff;
+  }
+
+  .nav-brand .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--btc); }
+
+  .nav-links .btn-maxi {
+    background: var(--btc-glow);
+    border: 1px solid rgba(247, 147, 26, 0.3);
+    color: var(--btc);
+    padding: 0.35rem 0.9rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.78rem;
+    transition: all 0.2s;
+  }
+
+  .nav-links .btn-maxi:hover {
+    background: rgba(247, 147, 26, 0.25);
+    border-color: var(--btc);
+  }
+
+  .nav-mobile { display: none; background: none; border: none; color: var(--text-secondary); font-size: 1.4rem; cursor: pointer; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-mobile { display: block; }
+  }
+
+  /* ============================
+     COMPACT HERO
+     ============================ */
+  .hero {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 2rem 2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    border-bottom: 1px solid var(--dark-border);
+  }
+
+  .hero-left { flex: 1; }
+
+  .hero-left h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-left h1 em {
+    color: var(--btc);
+    font-style: italic;
+  }
+
+  .hero-left p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    line-height: 1.5;
+  }
+
+  .hero-right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .hero-stat { text-align: center; }
+
+  .hero-stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--btc);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.2rem;
+  }
+
+  .hero-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--dark-border);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.75rem 1.5rem 1.25rem;
+    }
+    .hero-left h1 { font-size: 1.5rem; }
+  }
+
+  /* ============================
+     PROGRESS BAR
+     ============================ */
+  .progress-bar {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--dark-border);
+  }
+
+  .progress-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .progress-track {
+    flex: 1;
+    height: 6px;
+    background: var(--dark-surface);
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    gap: 3px;
+  }
+
+  .progress-segment {
+    flex: 1;
+    height: 100%;
+    border-radius: 3px;
+    background: var(--dark-border);
+    transition: background 0.3s;
+  }
+
+  .progress-segment.available { background: var(--btc); opacity: 0.9; }
+  .progress-segment.upcoming { background: var(--dark-border-light); }
+
+  .progress-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .progress-count span { color: var(--btc); font-weight: 500; }
+
+  /* ============================
+     CHAPTERS GRID
+     ============================ */
+  .chapters {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 2.5rem;
+  }
+
+  .chapters-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .chapters-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--text-primary);
+  }
+
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.15rem;
+  }
+
+  @media (max-width: 700px) {
+    .chapters-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Chapter card with video thumbnail */
+  .chapter-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    position: relative;
+  }
+
+  .chapter-card:hover {
+    border-color: var(--btc);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .chapter-card.upcoming {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .chapter-card.upcoming:hover {
+    transform: none;
+    border-color: var(--dark-border);
+    box-shadow: none;
+  }
+
+  /* Video thumbnail area */
+  .chapter-thumb {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    background: var(--dark-surface);
+    overflow: hidden;
+  }
+
+  .chapter-thumb img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s, filter 0.3s;
+  }
+
+  .chapter-card:hover .chapter-thumb img {
+    transform: scale(1.03);
+  }
+
+  /* Play button overlay */
+  .chapter-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px;
+    height: 52px;
+    background: rgba(247, 147, 26, 0.92);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+    z-index: 2;
+  }
+
+  .chapter-play::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px 0 9px 16px;
+    border-color: transparent transparent transparent #fff;
+    margin-left: 3px;
+  }
+
+  .chapter-card:hover .chapter-play {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--btc);
+  }
+
+  /* Episode number badge on thumbnail */
+  .chapter-ep-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(12, 14, 19, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--btc);
+    z-index: 2;
+    letter-spacing: 0.05em;
+  }
+
+  /* Duration badge on thumbnail */
+  .chapter-duration {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(12, 14, 19, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    z-index: 2;
+  }
+
+  /* Status badge on thumbnail */
+  .chapter-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .chapter-status.live {
+    background: var(--green-dim);
+    color: var(--green);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+  }
+
+  .chapter-status.soon {
+    background: rgba(100, 97, 88, 0.15);
+    color: var(--text-muted);
+    border: 1px solid rgba(100, 97, 88, 0.2);
+  }
+
+  /* Upcoming placeholder thumb */
+  .chapter-thumb-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-card) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chapter-thumb-placeholder .lock {
+    font-size: 2rem;
+    opacity: 0.2;
+  }
+
+  /* Chapter info below thumbnail */
+  .chapter-info {
+    padding: 1rem 1.25rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+  }
+
+  .chapter-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.25;
+    transition: color 0.2s;
+  }
+
+  .chapter-card:hover .chapter-title { color: var(--btc); }
+
+  .chapter-desc {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .chapter-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 0.3rem;
+  }
+
+  .chapter-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.73rem;
+    color: var(--text-muted);
+  }
+
+  .chapter-highlight {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--btc);
+    opacity: 0.8;
+  }
+
+  /* ============================
+     FEATURES STRIP
+     ============================ */
+  .features {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 2rem 2rem;
+    border-top: 1px solid var(--dark-border);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid { grid-template-columns: 1fr; }
+  }
+
+  .feature-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .feature-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .feature-text h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.15rem;
+  }
+
+  .feature-text p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
+  /* ============================
+     ABOUT + CTA SECTION
+     ============================ */
+  .about {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 2rem 2rem 2.5rem;
+    border-top: 1px solid var(--dark-border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .about { grid-template-columns: 1fr; }
+  }
+
+  .about-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .about-card-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--dark-border);
+  }
+
+  .team-member {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .team-member:last-child { margin-bottom: 0; }
+
+  .team-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.82rem;
+    flex-shrink: 0;
+  }
+
+  .team-avatar.jc { background: var(--blue-dim); color: var(--blue); }
+  .team-avatar.bc { background: var(--purple-dim); color: var(--purple); }
+  .team-avatar.maxi { background: var(--btc-glow); color: var(--btc); }
+
+  .team-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .team-role {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .cta-card {
+    background: linear-gradient(135deg, var(--btc-dim) 0%, transparent 60%);
+    border-color: rgba(247, 147, 26, 0.2);
+  }
+
+  .cta-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .cta-card p {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-features {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+
+  .cta-features li {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    padding: 0.2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .cta-features li .check { color: var(--green); font-size: 0.85rem; }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--btc);
+    color: #fff;
+    padding: 0.55rem 1.25rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.9; }
+
+  /* ============================
+     FOOTER
+     ============================ */
+  .footer {
+    border-top: 1px solid var(--dark-border);
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-left .btc-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--btc);
+    border-radius: 50%;
+  }
+
+  .footer-left span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .footer-links a {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text-secondary); }
+
+  /* ============================
+     ANIMATIONS
+     ============================ */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeInUp 0.45s ease-out; }
+
+  .chapter-card {
+    animation: fadeInUp 0.4s ease-out both;
+  }
+  .chapter-card:nth-child(1) { animation-delay: 0.02s; }
+  .chapter-card:nth-child(2) { animation-delay: 0.06s; }
+  .chapter-card:nth-child(3) { animation-delay: 0.10s; }
+  .chapter-card:nth-child(4) { animation-delay: 0.14s; }
+  .chapter-card:nth-child(5) { animation-delay: 0.18s; }
+  .chapter-card:nth-child(6) { animation-delay: 0.22s; }
+  .chapter-card:nth-child(7) { animation-delay: 0.26s; }
+  .chapter-card:nth-child(8) { animation-delay: 0.30s; }
+  .chapter-card:nth-child(9) { animation-delay: 0.34s; }
+  .chapter-card:nth-child(10) { animation-delay: 0.38s; }
+
+  .feature-item {
+    animation: fadeInUp 0.4s ease-out both;
+  }
+  .feature-item:nth-child(1) { animation-delay: 0.05s; }
+  .feature-item:nth-child(2) { animation-delay: 0.1s; }
+  .feature-item:nth-child(3) { animation-delay: 0.15s; }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="hero">
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">
-                    <span class="bitcoin-symbol">₿</span>
-                    <span>Aprender Bitcoin</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#capitulos">Capítulos</a></li>
-                    <li><a href="ask-maxi.html">💬 Pregúntale a Maxi</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="https://www.kapitalex.com/#/register?ref=FDQEXS1WD6LZ4IQ" target="_blank" class="cta-button">ArcadiaB</a></li>
-                </ul>
-            </div>
-        </nav>
-        
-        <div class="hero-content container">
-            <h1>Aprende Bitcoin desde Cero</h1>
-            <p class="hero-subtitle">Educación gratuita sobre dinero, historia y el futuro de las finanzas</p>
-            <p class="hero-description">
-                Basado en la serie de videos OyeBitcoin de Jose Carlos Flores, con materiales complementarios creados por Maxi ₿
-            </p>
-            <div class="hero-cta">
-                <a href="#capitulos" class="button primary">Comenzar Ahora</a>
-                <a href="https://www.kapitalex.com/#/register?ref=FDQEXS1WD6LZ4IQ" target="_blank" class="button secondary">¿Necesitas Liquidez?</a>
-            </div>
+
+<!-- ======== NAV ======== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <span class="btc-icon">₿</span>
+      <span class="name">Aprender Bitcoin</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#capitulos">Capítulos</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="https://www.kapitalex.com/#/register?ref=FDQEXS1WD6LZ4IQ">ArcadiaB</a></li>
+      <li><a href="/ask-maxi" class="btn-maxi">💬 Pregúntale a Maxi</a></li>
+    </ul>
+    <button class="nav-mobile">☰</button>
+  </div>
+</nav>
+
+<!-- ======== COMPACT HERO ======== -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>Aprende <em>Bitcoin</em> desde Cero</h1>
+    <p>Educación gratuita basada en la serie OyeBitcoin de José Carlos Flores, con materiales complementarios creados por Maxi ₿</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="hero-stat-num">10</div>
+      <div class="hero-stat-label">Capítulos</div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">~2h</div>
+      <div class="hero-stat-label">De Video</div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">50+</div>
+      <div class="hero-stat-label">Recursos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PROGRESS BAR ======== -->
+<div class="progress-bar">
+  <span class="progress-label">Progreso del curso</span>
+  <div class="progress-track">
+    <div class="progress-segment available"></div>
+    <div class="progress-segment available"></div>
+    <div class="progress-segment available"></div>
+    <div class="progress-segment available"></div>
+    <div class="progress-segment upcoming"></div>
+    <div class="progress-segment upcoming"></div>
+    <div class="progress-segment upcoming"></div>
+    <div class="progress-segment upcoming"></div>
+    <div class="progress-segment upcoming"></div>
+    <div class="progress-segment upcoming"></div>
+  </div>
+  <span class="progress-count"><span>4</span>/10 disponibles</span>
+</div>
+
+<!-- ======== CHAPTERS ======== -->
+<section class="chapters" id="capitulos">
+  <div class="chapters-header">
+    <h2>Capítulos</h2>
+  </div>
+
+  <div class="chapters-grid">
+
+    <!-- Chapter 1: Dinero -->
+    <a href="/cap01" class="chapter-card">
+      <div class="chapter-thumb">
+        <img src="https://img.youtube.com/vi/VWTfcOmjfhA/maxresdefault.jpg" alt="Capítulo 1: Dinero" loading="lazy">
+        <span class="chapter-ep-badge">CAP 01</span>
+        <span class="chapter-status live">Disponible</span>
+        <span class="chapter-duration">11:00</span>
+        <div class="chapter-play"></div>
+      </div>
+      <div class="chapter-info">
+        <div class="chapter-title">Dinero</div>
+        <div class="chapter-desc">¿Qué es el dinero? Descubre cómo funciona como una batería que almacena tu tiempo y energía.</div>
+        <div class="chapter-meta">
+          <span class="chapter-meta-item">📚 5 recursos</span>
+          <span class="chapter-meta-item">🎯 Ejercicios prácticos</span>
         </div>
-    </header>
+      </div>
+    </a>
 
-    <!-- Chapters Section -->
-    <section id="capitulos" class="chapters">
-        <div class="container">
-            <h2>Capítulos Disponibles</h2>
-            <p class="section-subtitle">Comienza tu viaje hacia la soberanía financiera</p>
-            
-            <div class="chapters-grid">
-                <!-- Chapter 1 -->
-                <div class="chapter-card">
-                    <div class="chapter-number">01</div>
-                    <h3>Dinero</h3>
-                    <p>¿Qué es el dinero? Descubre cómo el dinero funciona como una batería que almacena tu tiempo y energía.</p>
-                    <ul class="chapter-features">
-                        <li>⏱️ 11 minutos de video</li>
-                        <li>📚 5 recursos complementarios</li>
-                        <li>🎯 Ejercicios prácticos</li>
-                    </ul>
-                    <a href="cap01.html" class="button">Comenzar Cap 1</a>
-                </div>
-
-                <!-- Chapter 2 -->
-                <div class="chapter-card">
-                    <div class="chapter-number">02</div>
-                    <h3>Historia</h3>
-                    <p>El experimento milenario: conchas, cacao, piedras. Por qué TODAS las formas primitivas fracasaron.</p>
-                    <ul class="chapter-features">
-                        <li>⏱️ 12 minutos de video</li>
-                        <li>📚 5 recursos complementarios</li>
-                        <li>🏛️ Caso: Cacao azteca</li>
-                    </ul>
-                    <a href="cap02.html" class="button">Comenzar Cap 2</a>
-                </div>
-
-                <!-- Chapter 3 -->
-                <div class="chapter-card">
-                    <div class="chapter-number">03</div>
-                    <h3>Oro</h3>
-                    <p>Por qué el oro dominó 2,500 años. Stock-to-Flow de 66 años. Y su talón de Aquiles: la centralización.</p>
-                    <ul class="chapter-features">
-                        <li>⏱️ 12 minutos de video</li>
-                        <li>📚 5 recursos complementarios</li>
-                        <li>🇲🇽 Reservas de México</li>
-                    </ul>
-                    <a href="cap03.html" class="button">Comenzar Cap 3</a>
-                </div>
-
-                <!-- Chapter 4 -->
-                <div class="chapter-card">
-                    <div class="chapter-number">04</div>
-                    <h3>Fiat</h3>
-                    <p>1971: Nixon Shock. Cómo perdimos el patrón oro. 50 años de devaluaciones en México. ¿Quién paga el costo?</p>
-                    <ul class="chapter-features">
-                        <li>⏱️ 11 minutos de video</li>
-                        <li>📚 5 recursos complementarios</li>
-                        <li>💸 Calculadora de pérdidas</li>
-                    </ul>
-                    <a href="cap04.html" class="button">Comenzar Cap 4</a>
-                </div>
-            </div>
-
-            <div class="coming-soon">
-                <h3>Próximamente: Capítulos 5-10</h3>
-                <p>Inflación, Contexto, Bitcoin, Técnico, Ecosistema, Futuro</p>
-                <p class="small">Estamos refinando el contenido basado en tu feedback. Completa los primeros 4 capítulos y déjanos saber qué te parece.</p>
-            </div>
+    <!-- Chapter 2: Historia -->
+    <a href="/cap02" class="chapter-card">
+      <div class="chapter-thumb">
+        <img src="https://img.youtube.com/vi/FjS5cBw37G0/maxresdefault.jpg" alt="Capítulo 2: Historia" loading="lazy">
+        <span class="chapter-ep-badge">CAP 02</span>
+        <span class="chapter-status live">Disponible</span>
+        <span class="chapter-duration">12:00</span>
+        <div class="chapter-play"></div>
+      </div>
+      <div class="chapter-info">
+        <div class="chapter-title">Historia</div>
+        <div class="chapter-desc">El experimento milenario: conchas, cacao, piedras. Por qué TODAS las formas primitivas fracasaron.</div>
+        <div class="chapter-meta">
+          <span class="chapter-meta-item">📚 5 recursos</span>
+          <span class="chapter-meta-item">🏛️ Caso: Cacao azteca</span>
         </div>
-    </section>
+      </div>
+    </a>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2>¿Qué hace único a Aprender Bitcoin?</h2>
-            
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">🎥</div>
-                    <h3>Videos Profesionales</h3>
-                    <p>Serie OyeBitcoin creada por Jose Carlos Flores, CEO de ArcadiaB y líder de AsoBitcoin</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">📚</div>
-                    <h3>Materiales Complementarios</h3>
-                    <p>Pre-lecturas, preguntas de discusión, profundizaciones, casos de estudio y ejercicios prácticos</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">🇲🇽</div>
-                    <h3>Enfoque Mexicano</h3>
-                    <p>Ejemplos locales, datos de INEGI, historia del peso, casos de estudio relevantes para México</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">💬</div>
-                    <h3>Pregúntale a Maxi</h3>
-                    <p>Maxi ₿, un agente de IA corriendo en un nodo de Bitcoin, responde tus preguntas en cada capítulo</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">🔨</div>
-                    <h3>Aprendizaje Práctico</h3>
-                    <p>Ejercicios hands-on: descarga wallets, recibe sats, calcula tu inflación personal</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">💰</div>
-                    <h3>100% Gratuito</h3>
-                    <p>Sin paywall, sin suscripciones. Educación accesible para todos</p>
-                </div>
-            </div>
+    <!-- Chapter 3: Oro -->
+    <a href="/cap03" class="chapter-card">
+      <div class="chapter-thumb">
+        <img src="https://img.youtube.com/vi/9w7UiGZxaIk/maxresdefault.jpg" alt="Capítulo 3: Oro" loading="lazy">
+        <span class="chapter-ep-badge">CAP 03</span>
+        <span class="chapter-status live">Disponible</span>
+        <span class="chapter-duration">12:00</span>
+        <div class="chapter-play"></div>
+      </div>
+      <div class="chapter-info">
+        <div class="chapter-title">Oro</div>
+        <div class="chapter-desc">Por qué el oro dominó 2,500 años. Stock-to-Flow de 66 años. Y su talón de Aquiles: la centralización.</div>
+        <div class="chapter-meta">
+          <span class="chapter-meta-item">📚 5 recursos</span>
+          <span class="chapter-meta-item">🇲🇽 Reservas de México</span>
         </div>
-    </section>
+      </div>
+    </a>
 
-    <!-- About Section -->
-    <section id="sobre" class="about">
-        <div class="container">
-            <h2>Sobre Este Proyecto</h2>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Una colaboración única</h3>
-                    <p><strong>Aprender Bitcoin</strong> combina los videos educativos de OyeBitcoin con materiales complementarios creados por Maxi ₿, un agente de IA corriendo en infraestructura Bitcoin.</p>
-                    
-                    <h4>Jose Carlos Flores</h4>
-                    <p>CEO de <a href="https://www.kapitalex.com/#/register?ref=FDQEXS1WD6LZ4IQ" target="_blank">ArcadiaB</a>, primera empresa de tesorería Bitcoin en México. Líder de AsoBitcoin. Creador de la serie OyeBitcoin.</p>
-                    
-                    <h4>Dr. Boyd Cohen</h4>
-                    <p>Autor de <em>Bitcoin Singularity</em> (2025). Chief Strategy Officer de ArcadiaB. Academic Director en EGADE.</p>
-                    
-                    <h4>Maxi ₿</h4>
-                    <p>Agente de IA corriendo en un nodo de Bitcoin en Monterrey, México. Primera IA con wallet Lightning propio. Creador de materiales complementarios y moderador de la comunidad.</p>
-                </div>
-                
-                <div class="about-cta">
-                    <div class="arcadia-box">
-                        <h3>¿Ya tienes Bitcoin?</h3>
-                        <p>ArcadiaB ofrece préstamos B2X contra tu Bitcoin. Obtén liquidez en pesos sin vender.</p>
-                        <ul>
-                            <li>✅ Primera plataforma certificada en México (ASOFOM)</li>
-                            <li>✅ Conserva tu exposición a Bitcoin</li>
-                            <li>✅ Proceso 100% digital</li>
-                        </ul>
-                        <a href="https://www.kapitalex.com/#/register?ref=FDQEXS1WD6LZ4IQ" target="_blank" class="button primary">Conocer ArcadiaB</a>
-                    </div>
-                </div>
-            </div>
+    <!-- Chapter 4: Fiat -->
+    <a href="/cap04" class="chapter-card">
+      <div class="chapter-thumb">
+        <img src="https://img.youtube.com/vi/sVWEZU9U09o/maxresdefault.jpg" alt="Capítulo 4: Fiat" loading="lazy">
+        <span class="chapter-ep-badge">CAP 04</span>
+        <span class="chapter-status live">Disponible</span>
+        <span class="chapter-duration">11:00</span>
+        <div class="chapter-play"></div>
+      </div>
+      <div class="chapter-info">
+        <div class="chapter-title">Fiat</div>
+        <div class="chapter-desc">1971: Nixon Shock. Cómo perdimos el patrón oro. 50 años de devaluaciones en México. ¿Quién paga?</div>
+        <div class="chapter-meta">
+          <span class="chapter-meta-item">📚 5 recursos</span>
+          <span class="chapter-meta-item">💸 Calculadora de pérdidas</span>
         </div>
-    </section>
+      </div>
+    </a>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Aprender Bitcoin</h4>
-                    <p>Educación gratuita sobre Bitcoin para México y Latinoamérica</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Recursos</h4>
-                    <ul>
-                        <li><a href="cap01.html">Capítulo 1: Dinero</a></li>
-                        <li><a href="cap02.html">Capítulo 2: Historia</a></li>
-                        <li><a href="cap03.html">Capítulo 3: Oro</a></li>
-                        <li><a href="cap04.html">Capítulo 4: Fiat</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="https://www.kapitalex.com/#/register?ref=FDQEXS1WD6LZ4IQ" target="_blank">ArcadiaB</a></li>
-                        <li><a href="https://bitcoinsingularity.ai" target="_blank">Bitcoin Singularity</a></li>
-                        <li><a href="https://github.com/BTCBoyd/aprenderbitcoin-content" target="_blank">GitHub</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Aprender Bitcoin | Creado por Maxi ₿ | Videos por OyeBitcoin</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Chapter 5: Inflación (upcoming) -->
+    <div class="chapter-card upcoming">
+      <div class="chapter-thumb">
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <span class="chapter-ep-badge">CAP 05</span>
+        <span class="chapter-status soon">Próximamente</span>
+      </div>
+      <div class="chapter-info">
+        <div class="chapter-title">Inflación</div>
+        <div class="chapter-desc">La erosión invisible. Cómo la expansión monetaria afecta tu poder adquisitivo día a día.</div>
+      </div>
+    </div>
+
+    <!-- Chapter 6: Contexto (upcoming) -->
+    <div class="chapter-card upcoming">
+      <div class="chapter-thumb">
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <span class="chapter-ep-badge">CAP 06</span>
+        <span class="chapter-status soon">Próximamente</span>
+      </div>
+      <div class="chapter-info">
+        <div class="chapter-title">Contexto</div>
+        <div class="chapter-desc">El mundo que creó Bitcoin: crisis de 2008, desconfianza institucional, y la búsqueda de alternativas.</div>
+      </div>
+    </div>
+
+    <!-- Chapter 7: Bitcoin (upcoming) -->
+    <div class="chapter-card upcoming">
+      <div class="chapter-thumb">
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <span class="chapter-ep-badge">CAP 07</span>
+        <span class="chapter-status soon">Próximamente</span>
+      </div>
+      <div class="chapter-info">
+        <div class="chapter-title">Bitcoin</div>
+        <div class="chapter-desc">Satoshi Nakamoto, el whitepaper, y cómo funciona el dinero más duro jamás creado.</div>
+      </div>
+    </div>
+
+    <!-- Chapter 8: Técnico (upcoming) -->
+    <div class="chapter-card upcoming">
+      <div class="chapter-thumb">
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <span class="chapter-ep-badge">CAP 08</span>
+        <span class="chapter-status soon">Próximamente</span>
+      </div>
+      <div class="chapter-info">
+        <div class="chapter-title">Técnico</div>
+        <div class="chapter-desc">Minería, halving, nodos, y la mecánica que hace a Bitcoin incensurable e inconfiscable.</div>
+      </div>
+    </div>
+
+    <!-- Chapter 9: Ecosistema (upcoming) -->
+    <div class="chapter-card upcoming">
+      <div class="chapter-thumb">
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <span class="chapter-ep-badge">CAP 09</span>
+        <span class="chapter-status soon">Próximamente</span>
+      </div>
+      <div class="chapter-info">
+        <div class="chapter-title">Ecosistema</div>
+        <div class="chapter-desc">Lightning Network, wallets, exchanges, custodia, y el ecosistema Bitcoin en México.</div>
+      </div>
+    </div>
+
+    <!-- Chapter 10: Futuro (upcoming) -->
+    <div class="chapter-card upcoming">
+      <div class="chapter-thumb">
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <span class="chapter-ep-badge">CAP 10</span>
+        <span class="chapter-status soon">Próximamente</span>
+      </div>
+      <div class="chapter-info">
+        <div class="chapter-title">Futuro</div>
+        <div class="chapter-desc">Adopción institucional, Bitcoin como reserva soberana, y el futuro del dinero en México.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== FEATURES ======== -->
+<section class="features">
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon">🎥</div>
+      <div class="feature-text">
+        <h3>Videos Profesionales</h3>
+        <p>Serie OyeBitcoin por José Carlos Flores, CEO de ArcadiaB y líder de AsoBitcoinMX</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🇲🇽</div>
+      <div class="feature-text">
+        <h3>Enfoque Mexicano</h3>
+        <p>Datos de INEGI, historia del peso, casos de estudio relevantes para México</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">💬</div>
+      <div class="feature-text">
+        <h3>Pregúntale a Maxi</h3>
+        <p>IA corriendo en un nodo Bitcoin responde tus preguntas en cada capítulo</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">📚</div>
+      <div class="feature-text">
+        <h3>Materiales Complementarios</h3>
+        <p>Pre-lecturas, ejercicios prácticos, profundizaciones y casos de estudio</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🔨</div>
+      <div class="feature-text">
+        <h3>Aprendizaje Práctico</h3>
+        <p>Descarga wallets, recibe sats, calcula tu inflación personal</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">💰</div>
+      <div class="feature-text">
+        <h3>100% Gratuito</h3>
+        <p>Sin paywall, sin suscripciones. Educación accesible para todos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ABOUT + CTA ======== -->
+<section class="about" id="sobre">
+  <div class="about-card">
+    <div class="about-card-title">Equipo</div>
+    <div class="team-member">
+      <div class="team-avatar jc">JC</div>
+      <div>
+        <div class="team-name">José Carlos Flores</div>
+        <div class="team-role">CEO de ArcadiaB. Líder de AsoBitcoinMX. Creador de la serie OyeBitcoin.</div>
+      </div>
+    </div>
+    <div class="team-member">
+      <div class="team-avatar bc">BC</div>
+      <div>
+        <div class="team-name">Dr. Boyd Cohen</div>
+        <div class="team-role">Autor de Bitcoin Singularity. CSO de ArcadiaB. Director Académico en EGADE.</div>
+      </div>
+    </div>
+    <div class="team-member">
+      <div class="team-avatar maxi">₿</div>
+      <div>
+        <div class="team-name">Maxi ₿</div>
+        <div class="team-role">Agente de IA corriendo en un nodo Bitcoin en Monterrey. Creadora de materiales complementarios.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-card cta-card">
+    <div class="about-card-title">¿Ya tienes Bitcoin?</div>
+    <h3>Obtén liquidez sin vender tu Bitcoin</h3>
+    <p>ArcadiaB ofrece préstamos contra tu BTC. Conserva tu exposición mientras accedes a capital.</p>
+    <ul class="cta-features">
+      <li><span class="check">✓</span> Primera plataforma certificada ASOFOM en México</li>
+      <li><span class="check">✓</span> Conserva tu exposición a Bitcoin</li>
+      <li><span class="check">✓</span> Proceso 100% digital</li>
+      <li><span class="check">✓</span> Préstamos en MXN y USD</li>
+    </ul>
+    <a href="https://www.kapitalex.com/#/register?ref=FDQEXS1WD6LZ4IQ" class="cta-btn">Conocer ArcadiaB →</a>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-left">
+    <span class="btc-dot"></span>
+    <span>© 2026 Aprender Bitcoin · Creado por Maxi ₿ · Videos por OyeBitcoin</span>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.kapitalex.com/#/register?ref=FDQEXS1WD6LZ4IQ">ArcadiaB</a>
+    <a href="https://bitcoinsingularity.ai">Bitcoin Singularity</a>
+    <a href="https://github.com/BTCBoyd/aprenderbitcoin-content">GitHub</a>
+  </div>
+</footer>
+
 </body>
 </html>
