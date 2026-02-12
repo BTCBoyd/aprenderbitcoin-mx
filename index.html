@@ -439,13 +439,25 @@
     height: 100%;
     background: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-card) 100%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
   }
 
   .chapter-thumb-placeholder .lock {
-    font-size: 2rem;
-    opacity: 0.2;
+    font-size: 2.5rem;
+    opacity: 0.3;
+  }
+
+  .chapter-thumb-placeholder .soon-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.6;
   }
 
   /* Chapter info below thumbnail */
@@ -899,7 +911,7 @@
     <!-- Chapter 5: Inflación (upcoming) -->
     <div class="chapter-card upcoming">
       <div class="chapter-thumb">
-        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span><span class="soon-text">Próximamente</span></div>
         <span class="chapter-ep-badge">CAP 05</span>
         <span class="chapter-status soon">Próximamente</span>
       </div>
@@ -912,7 +924,7 @@
     <!-- Chapter 6: Contexto (upcoming) -->
     <div class="chapter-card upcoming">
       <div class="chapter-thumb">
-        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span><span class="soon-text">Próximamente</span></div>
         <span class="chapter-ep-badge">CAP 06</span>
         <span class="chapter-status soon">Próximamente</span>
       </div>
@@ -925,7 +937,7 @@
     <!-- Chapter 7: Bitcoin (upcoming) -->
     <div class="chapter-card upcoming">
       <div class="chapter-thumb">
-        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span><span class="soon-text">Próximamente</span></div>
         <span class="chapter-ep-badge">CAP 07</span>
         <span class="chapter-status soon">Próximamente</span>
       </div>
@@ -938,7 +950,7 @@
     <!-- Chapter 8: Técnico (upcoming) -->
     <div class="chapter-card upcoming">
       <div class="chapter-thumb">
-        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span><span class="soon-text">Próximamente</span></div>
         <span class="chapter-ep-badge">CAP 08</span>
         <span class="chapter-status soon">Próximamente</span>
       </div>
@@ -951,7 +963,7 @@
     <!-- Chapter 9: Ecosistema (upcoming) -->
     <div class="chapter-card upcoming">
       <div class="chapter-thumb">
-        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span><span class="soon-text">Próximamente</span></div>
         <span class="chapter-ep-badge">CAP 09</span>
         <span class="chapter-status soon">Próximamente</span>
       </div>
@@ -964,7 +976,7 @@
     <!-- Chapter 10: Futuro (upcoming) -->
     <div class="chapter-card upcoming">
       <div class="chapter-thumb">
-        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span></div>
+        <div class="chapter-thumb-placeholder"><span class="lock">🔒</span><span class="soon-text">Próximamente</span></div>
         <span class="chapter-ep-badge">CAP 10</span>
         <span class="chapter-status soon">Próximamente</span>
       </div>
